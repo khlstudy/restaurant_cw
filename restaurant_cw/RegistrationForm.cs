@@ -69,7 +69,7 @@ namespace restaurant_cw
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не вдалось зареєструватись. Помилка: " + ex.Message);
+                    MessageBox.Show("Не вдалось зареєструватись. Помилка: ", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {

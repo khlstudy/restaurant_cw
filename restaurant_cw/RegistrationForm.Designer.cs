@@ -186,6 +186,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(815, 515);
             this.Name = "RegistrationForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Реєстрація";
             this.Load += new System.EventHandler(this.RegistrationForm_Load);
             this.ResumeLayout(false);

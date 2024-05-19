@@ -14,10 +14,13 @@ namespace restaurant_cw
     public partial class Form1 : Form
     {
         private RegistrationForm regform;
+        private AuthenticationForm authform;
+
         public Form1()
         {
             InitializeComponent();
             regform = new RegistrationForm(this);
+            authform = new AuthenticationForm(this);
         }
 
         //RegistrationForm regform = new RegistrationForm();
@@ -46,6 +49,12 @@ namespace restaurant_cw
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void btnAuthorizationForm_Click(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            authform.Show();
         }
     }
 }
