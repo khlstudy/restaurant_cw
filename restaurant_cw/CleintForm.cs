@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace restaurant_cw
 {
-    public partial class UserForm : Form
+    public partial class CleintForm : Form
     {
-        public UserForm(int userId)
+        public CleintForm(int userId)
         {
             InitializeComponent();
         }

@@ -1,6 +1,6 @@
 ﻿namespace restaurant_cw
 {
-    partial class UserForm
+    partial class WaiterForm
     {
         /// <summary>
         /// Required designer variable.
@@ -30,18 +30,14 @@
         {
             this.SuspendLayout();
             // 
-            // UserForm
+            // WaiterForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(797, 538);
-            this.Font = new System.Drawing.Font("Verdana", 10.2F);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.MinimumSize = new System.Drawing.Size(815, 585);
-            this.Name = "UserForm";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Сторінка клієнта";
-            this.Load += new System.EventHandler(this.UserForm_Load);
+            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Name = "WaiterForm";
+            this.Text = "Сторінка офіціанта";
+            this.Load += new System.EventHandler(this.WaiterForm_Load);
             this.ResumeLayout(false);
 
         }

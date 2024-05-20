@@ -34,11 +34,6 @@ namespace restaurant_cw
             mainform.Show();
         }
 
-        private void btnRegister_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAuthentication_Click(object sender, EventArgs e)
         {
             string login = txtLogin.Text;
@@ -55,24 +50,28 @@ namespace restaurant_cw
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@login", login);
                     cmd.Parameters.AddWithValue("@password", password);
-                    MySqlDataReader reader = cmd.ExecuteReader();
+                    object result = cmd.ExecuteScalar();
 
-                    MessageBox.Show("Успішний вхід!", "Ви увійшли в акаунт", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    txtLogin.Clear();
-                    txtPassword.Clear();
-                    int userId = reader.GetInt32("client_id");
-
-                    if (userId.Equals("client_id"))
+                    if (result != null) 
                     {
-                        UserForm userForm = new UserForm(userId); //ось тут помилка
-                        userForm.Show();
+                        int userId = Convert.ToInt32(result); 
+                        MessageBox.Show("Успішний вхід!", "Ви увійшли в акаунт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtLogin.Clear();
+                        txtPassword.Clear();
+
+                        CleintForm clientForm = new CleintForm(userId);
+                        clientForm.Show();
                         this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Користувача з таким логіном та паролем не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не вдалось увійти. Помилка: ", ex.Message, MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Не вдалось увійти. Помилка: " + ex.Message,"Помилка" , MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -85,7 +84,76 @@ namespace restaurant_cw
             }
 
         }
+
+        private void btnAuthenticationAdmin_Click(object sender, EventArgs e)
+        {
+            string loginA = txtLoginAdmin.Text;
+            string passwordA = txtPasswordAdmin.Text;
+            string position = сBoxEmployeeType.SelectedItem?.ToString();
+
+            if (loginA != "" && passwordA != "" && position != "")
+            {
+                MySqlConnection conn = DBUtils.GetDBConnection();
+                try
+                {
+                    conn.Open();
+
+                    string query = "SELECT employee_id FROM employee JOIN employee_type ON fk_employee_type_id = employee_type_id WHERE login = @login AND password = @password AND type = @position;";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@login", loginA);
+                    cmd.Parameters.AddWithValue("@password", passwordA);
+                    cmd.Parameters.AddWithValue("@position", position);
+                    object result = cmd.ExecuteScalar();
+
+                    if (result != null)
+                    {
+                        int userId = Convert.ToInt32(result);
+                        MessageBox.Show("Успішний вхід!", "Ви увійшли в акаунт", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                        txtLogin.Clear();
+                        txtPassword.Clear();
+
+                        if (position == "Менеджер")
+                        {
+                            ManagerForm managerForm = new ManagerForm(userId);
+                            managerForm.Show();
+                        }
+                        else if (position == "Офіціант")
+                        {
+                            WaiterForm waiterForm = new WaiterForm(userId);
+                            waiterForm.Show();
+                        }
+
+                        this.Hide();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Працівника з таким логіном, паролем та посадою не знайдено", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не вдалось увійти. Помилка: " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Заповніть всі поля", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+
+        }
+
+        private void AuthenticationForm_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
+
 
 

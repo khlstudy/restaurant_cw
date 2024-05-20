@@ -204,11 +204,23 @@
     <Compile Include="AuthenticationForm.Designer.cs">
       <DependentUpon>AuthenticationForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="UserForm.cs">
+    <Compile Include="CleintForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <Compile Include="CleintForm.Designer.cs">
+      <DependentUpon>CleintForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WaiterForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WaiterForm.Designer.cs">
+      <DependentUpon>WaiterForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ManagerForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManagerForm.Designer.cs">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="RegistrationForm.cs">
       <SubType>Form</SubType>
@@ -224,6 +236,9 @@
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ManagerForm.resx">
+      <DependentUpon>ManagerForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="RegistrationForm.resx">
       <DependentUpon>RegistrationForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -237,8 +252,11 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <EmbeddedResource Include="CleintForm.resx">
+      <DependentUpon>CleintForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WaiterForm.resx">
+      <DependentUpon>WaiterForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
