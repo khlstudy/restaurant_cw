@@ -15,12 +15,14 @@ namespace restaurant_cw
     {
         private RegistrationForm regform;
         private AuthenticationForm authform;
+        private MenuForm menuform;
 
         public Form1()
         {
             InitializeComponent();
             regform = new RegistrationForm(this);
             authform = new AuthenticationForm(this);
+            menuform = new MenuForm(this);
         }
 
         //RegistrationForm regform = new RegistrationForm();
@@ -55,6 +57,12 @@ namespace restaurant_cw
         {
             ActiveForm.Hide();
             authform.Show();
+        }
+
+        private void btnMenuForm_Click(object sender, EventArgs e)
+        {
+            ActiveForm.Hide();
+            menuform.Show();
         }
     }
 }

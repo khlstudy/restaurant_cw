@@ -51,6 +51,7 @@
             // 
             // btnBackMain
             // 
+            this.btnBackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackMain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackMain.Location = new System.Drawing.Point(629, 467);
             this.btnBackMain.Name = "btnBackMain";
@@ -62,6 +63,7 @@
             // 
             // OpenAccontTabContcol
             // 
+            this.OpenAccontTabContcol.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.OpenAccontTabContcol.Controls.Add(this.OpenClientTabContcol);
             this.OpenAccontTabContcol.Controls.Add(this.OpenAdminTabContcol);
             this.OpenAccontTabContcol.Location = new System.Drawing.Point(30, 27);

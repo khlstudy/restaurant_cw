@@ -28,27 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.btnAuthorizationForm = new System.Windows.Forms.Button();
             this.btnRegistrationForm = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.btnMenuForm = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Verdana", 20.2F);
-            this.label1.Location = new System.Drawing.Point(68, 41);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(662, 41);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Ресторан української кухні \"Лелека\"";
-            // 
             // btnAuthorizationForm
             // 
+            this.btnAuthorizationForm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnAuthorizationForm.BackColor = System.Drawing.Color.Tan;
             this.btnAuthorizationForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnAuthorizationForm.Location = new System.Drawing.Point(451, 231);
@@ -61,6 +52,7 @@
             // 
             // btnRegistrationForm
             // 
+            this.btnRegistrationForm.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRegistrationForm.BackColor = System.Drawing.Color.Tan;
             this.btnRegistrationForm.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegistrationForm.Location = new System.Drawing.Point(451, 302);
@@ -71,19 +63,9 @@
             this.btnRegistrationForm.UseVisualStyleBackColor = false;
             this.btnRegistrationForm.Click += new System.EventHandler(this.btnRegistrationForm_Click);
             // 
-            // button3
-            // 
-            this.button3.BackColor = System.Drawing.Color.Tan;
-            this.button3.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button3.Location = new System.Drawing.Point(451, 162);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(279, 51);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "Меню";
-            this.button3.UseVisualStyleBackColor = false;
-            // 
             // btnExit
             // 
+            this.btnExit.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnExit.BackColor = System.Drawing.Color.Tan;
             this.btnExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnExit.Location = new System.Drawing.Point(451, 375);
@@ -96,6 +78,7 @@
             // 
             // pictureBox1
             // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.pictureBox1.Image = global::restaurant_cw.Properties.Resources.restoraunt_main;
             this.pictureBox1.InitialImage = null;
             this.pictureBox1.Location = new System.Drawing.Point(75, 113);
@@ -105,18 +88,42 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Verdana", 20.2F);
+            this.label2.Location = new System.Drawing.Point(68, 37);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(662, 41);
+            this.label2.TabIndex = 7;
+            this.label2.Text = "Ресторан української кухні \"Лелека\"";
+            // 
+            // btnMenuForm
+            // 
+            this.btnMenuForm.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnMenuForm.BackColor = System.Drawing.Color.Tan;
+            this.btnMenuForm.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMenuForm.Location = new System.Drawing.Point(451, 156);
+            this.btnMenuForm.Name = "btnMenuForm";
+            this.btnMenuForm.Size = new System.Drawing.Size(279, 51);
+            this.btnMenuForm.TabIndex = 9;
+            this.btnMenuForm.Text = "Меню";
+            this.btnMenuForm.UseVisualStyleBackColor = false;
+            this.btnMenuForm.Click += new System.EventHandler(this.btnMenuForm_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(797, 538);
+            this.Controls.Add(this.btnMenuForm);
+            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pictureBox1);
-            this.Controls.Add(this.button3);
             this.Controls.Add(this.btnRegistrationForm);
             this.Controls.Add(this.btnAuthorizationForm);
-            this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -132,13 +139,12 @@
         }
 
         #endregion
-
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnAuthorizationForm;
         private System.Windows.Forms.Button btnRegistrationForm;
-        private System.Windows.Forms.Button button3;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Button btnMenuForm;
     }
 }
 

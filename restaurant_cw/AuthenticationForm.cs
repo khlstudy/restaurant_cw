@@ -116,7 +116,7 @@ namespace restaurant_cw
 
                         if (position == "Менеджер")
                         {
-                            ManagerForm managerForm = new ManagerForm(userId);
+                            ManagerForm managerForm = new ManagerForm(userId, mainform);
                             managerForm.Show();
                         }
                         else if (position == "Офіціант")

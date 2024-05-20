@@ -46,6 +46,7 @@
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(266, 56);
             this.label1.Name = "label1";
@@ -55,6 +56,7 @@
             // 
             // txtLoginClient
             // 
+            this.txtLoginClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtLoginClient.Location = new System.Drawing.Point(270, 79);
             this.txtLoginClient.Name = "txtLoginClient";
             this.txtLoginClient.Size = new System.Drawing.Size(261, 28);
@@ -62,6 +64,7 @@
             // 
             // txtPasswordClient
             // 
+            this.txtPasswordClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPasswordClient.Location = new System.Drawing.Point(270, 144);
             this.txtPasswordClient.Name = "txtPasswordClient";
             this.txtPasswordClient.Size = new System.Drawing.Size(261, 28);
@@ -70,6 +73,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label2.AutoSize = true;
             this.label2.Location = new System.Drawing.Point(266, 121);
             this.label2.Name = "label2";
@@ -79,6 +83,7 @@
             // 
             // txtSurnameClient
             // 
+            this.txtSurnameClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtSurnameClient.Location = new System.Drawing.Point(270, 274);
             this.txtSurnameClient.Name = "txtSurnameClient";
             this.txtSurnameClient.Size = new System.Drawing.Size(261, 28);
@@ -86,6 +91,7 @@
             // 
             // label3
             // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label3.AutoSize = true;
             this.label3.Location = new System.Drawing.Point(266, 251);
             this.label3.Name = "label3";
@@ -95,6 +101,7 @@
             // 
             // txtNameClient
             // 
+            this.txtNameClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtNameClient.Location = new System.Drawing.Point(270, 210);
             this.txtNameClient.Name = "txtNameClient";
             this.txtNameClient.Size = new System.Drawing.Size(261, 28);
@@ -102,6 +109,7 @@
             // 
             // label4
             // 
+            this.label4.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label4.AutoSize = true;
             this.label4.Location = new System.Drawing.Point(266, 187);
             this.label4.Name = "label4";
@@ -111,6 +119,7 @@
             // 
             // txtPhoneClient
             // 
+            this.txtPhoneClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtPhoneClient.Location = new System.Drawing.Point(270, 413);
             this.txtPhoneClient.Name = "txtPhoneClient";
             this.txtPhoneClient.Size = new System.Drawing.Size(261, 28);
@@ -118,6 +127,7 @@
             // 
             // label5
             // 
+            this.label5.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label5.AutoSize = true;
             this.label5.Location = new System.Drawing.Point(266, 390);
             this.label5.Name = "label5";
@@ -127,6 +137,7 @@
             // 
             // txtEmailClient
             // 
+            this.txtEmailClient.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.txtEmailClient.Location = new System.Drawing.Point(270, 342);
             this.txtEmailClient.Name = "txtEmailClient";
             this.txtEmailClient.Size = new System.Drawing.Size(261, 28);
@@ -134,6 +145,7 @@
             // 
             // label6
             // 
+            this.label6.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.label6.AutoSize = true;
             this.label6.Location = new System.Drawing.Point(266, 319);
             this.label6.Name = "label6";
@@ -143,6 +155,7 @@
             // 
             // btnRegister
             // 
+            this.btnRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnRegister.Location = new System.Drawing.Point(310, 460);
             this.btnRegister.Name = "btnRegister";
@@ -154,6 +167,7 @@
             // 
             // btnBackMain
             // 
+            this.btnBackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBackMain.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBackMain.Location = new System.Drawing.Point(644, 466);
             this.btnBackMain.Name = "btnBackMain";
