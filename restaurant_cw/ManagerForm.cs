@@ -43,11 +43,10 @@ namespace restaurant_cw
             string name = txtName.Text;
             string description = txtDescription.Text;
             decimal price = decimal.Parse(txtPrice.Text);
-            int amount = int.Parse(txtAmount.Text);
             string categoryName = cmbCategory.SelectedItem.ToString();
             string imagePath = txtImagePath.Text;
 
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description) && price > 0 && amount > 0 && !string.IsNullOrEmpty(categoryName) && !string.IsNullOrEmpty(imagePath))
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description) && price > 0 && !string.IsNullOrEmpty(categoryName) && !string.IsNullOrEmpty(imagePath))
             {
                 using (MySqlConnection conn = DBUtils.GetDBConnection())
                 {
@@ -67,27 +66,25 @@ namespace restaurant_cw
 
                     int categoryId = Convert.ToInt32(result);
 
-                    // Копіюємо зображення у папку Resources
                     string newImagePath = Path.Combine("F:\\projects\\2course\\restaurant_cw\\restaurant_cw\\Resources", Path.GetFileName(imagePath));
 
-                    // Скопіювати файл в папку Resources
                     File.Copy(imagePath, newImagePath, true);
 
-
-                    // Додаємо продукт до бази даних
-                    string query = "INSERT INTO product (name, description, price, amount, fk_category_id, image_path) VALUES (@name, @description, @price, @amount, @categoryId, @image_path)";
+                    string query = "INSERT INTO product (name, description, price, fk_category_id, image_path) VALUES (@name, @description, @price, @categoryId, @image_path)";
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", name);
                     cmd.Parameters.AddWithValue("@description", description);
                     cmd.Parameters.AddWithValue("@price", price);
-                    cmd.Parameters.AddWithValue("@amount", amount);
                     cmd.Parameters.AddWithValue("@categoryId", categoryId);
                     cmd.Parameters.AddWithValue("@image_path", newImagePath);
 
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Product saved successfully!");
+
+                    // Викликаємо метод оновлення меню
+                    mainform.UpdateMenu();
                 }
             }
             else

@@ -64,5 +64,14 @@ namespace restaurant_cw
             ActiveForm.Hide();
             menuform.Show();
         }
+
+        public void UpdateMenu()
+        {
+            if (menuform != null)
+            {
+                menuform.RefreshMenu();
+            }
+        }
+
     }
 }

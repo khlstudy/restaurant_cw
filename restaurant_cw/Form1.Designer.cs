@@ -32,8 +32,8 @@
             this.btnRegistrationForm = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label2 = new System.Windows.Forms.Label();
             this.btnMenuForm = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,17 +88,6 @@
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
             // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Verdana", 20.2F);
-            this.label2.Location = new System.Drawing.Point(68, 37);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(662, 41);
-            this.label2.TabIndex = 7;
-            this.label2.Text = "Ресторан української кухні \"Лелека\"";
-            // 
             // btnMenuForm
             // 
             this.btnMenuForm.Anchor = System.Windows.Forms.AnchorStyles.None;
@@ -112,14 +101,25 @@
             this.btnMenuForm.UseVisualStyleBackColor = false;
             this.btnMenuForm.Click += new System.EventHandler(this.btnMenuForm_Click);
             // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Verdana", 20.2F);
+            this.label1.Location = new System.Drawing.Point(68, 33);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(662, 41);
+            this.label1.TabIndex = 10;
+            this.label1.Text = "Ресторан української кухні \"Лелека\"";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Linen;
             this.ClientSize = new System.Drawing.Size(797, 538);
+            this.Controls.Add(this.label1);
             this.Controls.Add(this.btnMenuForm);
-            this.Controls.Add(this.label2);
             this.Controls.Add(this.btnExit);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.btnRegistrationForm);
@@ -143,8 +143,8 @@
         private System.Windows.Forms.Button btnRegistrationForm;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btnExit;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button btnMenuForm;
+        private System.Windows.Forms.Label label1;
     }
 }
 
