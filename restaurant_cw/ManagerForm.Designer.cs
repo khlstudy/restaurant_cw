@@ -37,6 +37,7 @@
             this.button3 = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.txtImagePath = new System.Windows.Forms.TextBox();
             this.btnAddProduct = new System.Windows.Forms.Button();
             this.btnChooseImage = new System.Windows.Forms.Button();
@@ -50,7 +51,6 @@
             this.txtName = new System.Windows.Forms.TextBox();
             this.tabPagUsers = new System.Windows.Forms.TabPage();
             this.tabPageMonitor = new System.Windows.Forms.TabPage();
-            this.label3 = new System.Windows.Forms.Label();
             this.tabControlMenu.SuspendLayout();
             this.tabPageMenu.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -157,6 +157,15 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Додавання страви або напою";
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(33, 328);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(196, 20);
+            this.label3.TabIndex = 14;
+            this.label3.Text = "Шлях до зображення";
             // 
             // txtImagePath
             // 
@@ -272,15 +281,6 @@
             this.tabPageMonitor.Text = "Моніторинг";
             this.tabPageMonitor.UseVisualStyleBackColor = true;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(33, 328);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(196, 20);
-            this.label3.TabIndex = 14;
-            this.label3.Text = "Шлях до зображення";
-            // 
             // ManagerForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -291,6 +291,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.MinimumSize = new System.Drawing.Size(815, 585);
             this.Name = "ManagerForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Сторінка менеджера";
             this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.tabControlMenu.ResumeLayout(false);

@@ -16,13 +16,21 @@ namespace restaurant_cw
         private RegistrationForm regform;
         private AuthenticationForm authform;
         private MenuForm menuform;
+        private int userId;
 
+        public int UserId
+        {
+            get { return userId; }
+            set { userId = value; }
+        }
         public Form1()
         {
             InitializeComponent();
             regform = new RegistrationForm(this);
-            authform = new AuthenticationForm(this);
-            menuform = new MenuForm(this);
+            menuform = new MenuForm(this, userId); 
+            authform = new AuthenticationForm(this, menuform); 
+
+
         }
 
         //RegistrationForm regform = new RegistrationForm();

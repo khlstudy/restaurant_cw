@@ -17,10 +17,12 @@ namespace restaurant_cw
     public partial class AuthenticationForm : Form
     {
         private Form1 mainform;
-        public AuthenticationForm(Form1 form)
+        private MenuForm menuform;
+        public AuthenticationForm(Form1 form, MenuForm menu)
         {
             InitializeComponent();
             mainform = form;
+            menuform = menu;
         }
 
         private void linkLabel1_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
@@ -60,7 +62,8 @@ namespace restaurant_cw
                         txtLogin.Clear();
                         txtPassword.Clear();
 
-                        CleintForm clientForm = new CleintForm(userId);
+                        ClientForm clientForm = new ClientForm(mainform, menuform, userId);
+
                         clientForm.Show();
                         this.Hide();
                     }
