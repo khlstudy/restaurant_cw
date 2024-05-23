@@ -5,6 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
+using System.Globalization;
 
 namespace restaurant_cw
 {
@@ -29,6 +30,9 @@ namespace restaurant_cw
         private Label lblDeliveryAddress;
         private TextBox txtDeliveryAddress;
 
+        private Dictionary<string, decimal> productPrices; 
+        private Dictionary<string, int> orderedProducts;
+
         public MenuForm(Form1 form, int userId)
         {
             InitializeComponent();
@@ -39,6 +43,9 @@ namespace restaurant_cw
             btnNextDishes.Enabled = false;
             btnPrevDrinks.Enabled = false;
             btnNextDrinks.Enabled = false;
+
+            productPrices = new Dictionary<string, decimal>(); 
+            orderedProducts = new Dictionary<string, int>(); 
 
             LoadProducts(currentPageDishes, "Страва");
             LoadProducts(currentPageDrinks, "Напій");
@@ -91,7 +98,6 @@ namespace restaurant_cw
                 return count > 0;
             }
         }
-
 
         private void MenuForm_Load(object sender, EventArgs e)
         {
@@ -238,8 +244,9 @@ namespace restaurant_cw
                             Width = 30,
                             Height = 30
                         };
-                        btnAddItemOrder.Click += (s, e) => UpdateProductQuantity(name, txtAmount, +1);
-                        btnDeleteItemOrder.Click += (s, e) => UpdateProductQuantity(name, txtAmount, -1);
+
+                        btnAddItemOrder.Click += (s, e) => UpdateProductQuantity(name, txtAmount, +1, price);
+                        btnDeleteItemOrder.Click += (s, e) => UpdateProductQuantity(name, txtAmount, -1, price);
 
                         panel.Controls.Add(pictureBox);
                         panel.Controls.Add(lblName);
@@ -257,6 +264,11 @@ namespace restaurant_cw
                         {
                             col = 0;
                             row++;
+                        }
+
+                        if (!productPrices.ContainsKey(name))
+                        {
+                            productPrices[name] = price;
                         }
                     }
 
@@ -351,7 +363,7 @@ namespace restaurant_cw
             LoadProducts(currentPageDrinks, "Напій");
         }
 
-        private void UpdateProductQuantity(string productName, TextBox txtAmount, int change)
+        private void UpdateProductQuantity(string productName, TextBox txtAmount, int change, decimal price)
         {
             int amount;
             if (!int.TryParse(txtAmount.Text, out amount))
@@ -363,39 +375,51 @@ namespace restaurant_cw
                 amount = Math.Max(1, amount) * change;
             }
 
-            bool productFound = false;
-
-            for (int i = 0; i < productList.Items.Count; i++)
+            if (orderedProducts.ContainsKey(productName))
             {
-                var item = productList.Items[i].ToString();
-                if (item.StartsWith(productName))
+                orderedProducts[productName] += amount;
+                if (orderedProducts[productName] <= 0)
                 {
-                    var parts = item.Split(':');
-                    int currentQuantity = int.Parse(parts[1].Trim());
-                    int newQuantity = currentQuantity + amount;
+                    orderedProducts.Remove(productName);
+                }
+            }
+            else if (amount > 0)
+            {
+                orderedProducts[productName] = amount;
+            }
 
-                    if (newQuantity <= 0)
-                    {
-                        productList.Items.RemoveAt(i);
-                    }
-                    else
-                    {
-                        productList.Items[i] = $"{productName}: {newQuantity}";
-                    }
-                    productFound = true;
-                    break;
+            UpdateProductList();
+            UpdateTotalPrice();
+        }
+
+        private void UpdateTotalPrice()
+        {
+            decimal currentTotalPrice = 0;
+            foreach (var product in orderedProducts)
+            {
+                string productName = product.Key;
+                int quantity = product.Value;
+                if (productPrices.ContainsKey(productName))
+                {
+                    decimal price = productPrices[productName];
+                    currentTotalPrice += price * quantity;
                 }
             }
 
-            if (!productFound && amount > 0)
+            lblPriceOrder.Text = $"Загальна ціна: {currentTotalPrice:C}";
+        }
+
+        private void UpdateProductList()
+        {
+            productList.Items.Clear();
+            foreach (var product in orderedProducts)
             {
-                productList.Items.Add($"{productName}: {amount}");
+                productList.Items.Add($"{product.Key}: {product.Value}");
             }
         }
 
         private void DisplayFields(bool isClient)
         {
-
             lblFirstName = new Label
             {
                 Text = "Ім'я:",
@@ -405,7 +429,7 @@ namespace restaurant_cw
             txtFirstName = new TextBox
             {
                 Text = "",
-                Location = new Point(lblFirstName.Location.X, lblFirstName.Bottom + 5), 
+                Location = new Point(lblFirstName.Location.X, lblFirstName.Bottom + 5),
                 Width = 261
             };
 
@@ -418,7 +442,7 @@ namespace restaurant_cw
             txtLastName = new TextBox
             {
                 Text = "",
-                Location = new Point(lblLastName.Location.X, lblLastName.Bottom + 5), 
+                Location = new Point(lblLastName.Location.X, lblLastName.Bottom + 5),
                 Width = 261
             };
 
@@ -431,7 +455,7 @@ namespace restaurant_cw
             txtPhoneNumber = new TextBox
             {
                 Text = "",
-                Location = new Point(lblPhoneNumber.Location.X, lblPhoneNumber.Bottom + 5), 
+                Location = new Point(lblPhoneNumber.Location.X, lblPhoneNumber.Bottom + 5),
                 Width = 261
             };
 
@@ -443,7 +467,7 @@ namespace restaurant_cw
             };
             cmbOrderType = new ComboBox
             {
-                Location = new Point(lblOrderType.Location.X, lblOrderType.Bottom + 5), 
+                Location = new Point(lblOrderType.Location.X, lblOrderType.Bottom + 5),
                 Width = 261,
                 DropDownStyle = ComboBoxStyle.DropDownList
             };
@@ -457,7 +481,7 @@ namespace restaurant_cw
             };
             txtDeliveryAddress = new TextBox
             {
-                Location = new Point(lblDeliveryAddress.Location.X, lblDeliveryAddress.Bottom + 5), 
+                Location = new Point(lblDeliveryAddress.Location.X, lblDeliveryAddress.Bottom + 5),
                 Width = 261
             };
 
@@ -471,6 +495,185 @@ namespace restaurant_cw
             groupBoxOrder.Controls.Add(cmbOrderType);
             groupBoxOrder.Controls.Add(lblDeliveryAddress);
             groupBoxOrder.Controls.Add(txtDeliveryAddress);
+        }
+        private decimal CalculateOrderPrice()
+        {
+            decimal currentTotalPrice = 0;
+            foreach (var product in orderedProducts)
+            {
+                string productName = product.Key;
+                int quantity = product.Value;
+                if (productPrices.ContainsKey(productName))
+                {
+                    decimal price = productPrices[productName];
+                    currentTotalPrice += price * quantity;
+                }
+            }
+            return currentTotalPrice;
+        }
+
+
+        private void btnMakeOrder_Click(object sender, EventArgs e)
+        {
+            string name = txtFirstName.Text;
+            string surname = txtLastName.Text;
+            string phone_number = txtPhoneNumber.Text;
+            string order_type = cmbOrderType.SelectedItem?.ToString();
+            string address = txtDeliveryAddress.Text;
+            decimal order_price = CalculateOrderPrice();
+
+            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname) && !string.IsNullOrEmpty(phone_number) && !string.IsNullOrEmpty(order_type) && !string.IsNullOrEmpty(address))
+            {
+                MySqlConnection conn = DBUtils.GetDBConnection();
+                try
+                {
+                    conn.Open();
+
+                    string query = "INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id) " +
+                                   "VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id); " +
+                                   "SELECT LAST_INSERT_ID();";
+
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    cmd.Parameters.AddWithValue("@name", name);
+                    cmd.Parameters.AddWithValue("@surname", surname);
+                    cmd.Parameters.AddWithValue("@phone_number", phone_number);
+                    cmd.Parameters.AddWithValue("@address", address);
+                    cmd.Parameters.AddWithValue("@order_price", order_price);
+                    cmd.Parameters.AddWithValue("@fk_receiving_type_id", GetReceivingTypeId(order_type));
+                    cmd.Parameters.AddWithValue("@fk_status_id", GetDefaultStatusId());
+                    int lastInsertedOrderId = Convert.ToInt32(cmd.ExecuteScalar());
+
+                    InsertOrderItems(lastInsertedOrderId);
+
+                    MessageBox.Show("Замовлення успішно зроблено!", "Успіх", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                    txtFirstName.Clear();
+                    txtLastName.Clear();
+                    txtPhoneNumber.Clear();
+                    txtDeliveryAddress.Clear();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Не вдалося створити замовлення. Помилка: " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                finally
+                {
+                    conn.Close();
+                }
+            }
+            else
+            {
+                MessageBox.Show("Будь ласка, заповніть всі поля.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+
+        private int GetReceivingTypeId(string orderType)
+        {
+            int receivingTypeId = -1;
+            string query = "SELECT receiving_type_id FROM receiving_type WHERE type = @type";
+
+            using (MySqlConnection conn = DBUtils.GetDBConnection())
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@type", orderType);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        receivingTypeId = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return receivingTypeId;
+        }
+
+        private int GetDefaultStatusId()
+        {
+            int defaultStatusId = -1;
+            string query = "SELECT status_id FROM status WHERE type = 'В обробці'";
+
+            using (MySqlConnection conn = DBUtils.GetDBConnection())
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        defaultStatusId = Convert.ToInt32(result);
+                    }
+                }
+            }
+
+            return defaultStatusId;
+        }
+
+        private void InsertOrderItems(int orderId)
+        {
+            using (MySqlConnection conn = DBUtils.GetDBConnection())
+            {
+                conn.Open();
+                try
+                {
+                    while (orderedProducts.Count > 0)
+                    {
+                        var product = orderedProducts.First();
+
+                        orderedProducts.Remove(product.Key);
+
+                        string productName = product.Key;
+                        int productId = GetProductIdByName(productName);
+
+                        if (productId != -1)
+                        {
+                            int quantity = product.Value;
+
+                            string query = "INSERT INTO order_item (fk_order_id, fk_product_id, quantity) VALUES (@fk_order_id, @fk_product_id, @quantity)";
+
+                            using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                            {
+                                cmd.Parameters.AddWithValue("@fk_order_id", orderId);
+                                cmd.Parameters.AddWithValue("@fk_product_id", productId);
+                                cmd.Parameters.AddWithValue("@quantity", quantity);
+                                cmd.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("InsertOrderItems не працює, ТОМУ ЩО " + ex);
+                }
+            }
+        }
+
+        private int GetProductIdByName(string productName)
+        {
+            int productId = -1;
+            string query = "SELECT product_id FROM product WHERE name = @name";
+
+            using (MySqlConnection conn = DBUtils.GetDBConnection())
+            {
+                conn.Open();
+
+                using (MySqlCommand cmd = new MySqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@name", productName);
+                    object result = cmd.ExecuteScalar();
+                    if (result != null)
+                    {
+                        productId = Convert.ToInt32(result);
+                        //MessageBox.Show("Айді продукта на ім'я " + productName + "=" + productId);
+                    }
+                }
+            }
+
+            return productId;
 
         }
 

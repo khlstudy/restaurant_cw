@@ -42,17 +42,27 @@ namespace restaurant_cw
         {
             string name = txtName.Text;
             string description = txtDescription.Text;
-            decimal price = decimal.Parse(txtPrice.Text);
-            string categoryName = cmbCategory.SelectedItem.ToString();
+            string priceText = txtPrice.Text;
+            string categoryName = cmbCategory.SelectedItem?.ToString();
             string imagePath = txtImagePath.Text;
 
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(description) && price > 0 && !string.IsNullOrEmpty(categoryName) && !string.IsNullOrEmpty(imagePath))
+            if (string.IsNullOrEmpty(name) || string.IsNullOrEmpty(description) || string.IsNullOrEmpty(priceText) || string.IsNullOrEmpty(categoryName) || string.IsNullOrEmpty(imagePath))
+            {
+                MessageBox.Show("Будь ласка заповніть всі поля та виберіть зображення");
+                return;
+            }
+
+            if (!decimal.TryParse(priceText, out decimal price) || price <= 0)
+            {
+                MessageBox.Show("Будь ласка введіть коректну ціну");
+                return;
+            }
+
+            try
             {
                 using (MySqlConnection conn = DBUtils.GetDBConnection())
                 {
                     conn.Open();
-
-                    // Отримуємо categoryId за допомогою запиту
                     string categoryQuery = "SELECT category_id FROM category WHERE name = @categoryName";
                     MySqlCommand categoryCmd = new MySqlCommand(categoryQuery, conn);
                     categoryCmd.Parameters.AddWithValue("@categoryName", categoryName);
@@ -81,15 +91,14 @@ namespace restaurant_cw
 
                     cmd.ExecuteNonQuery();
 
-                    MessageBox.Show("Product saved successfully!");
+                    MessageBox.Show("Продукт був успішно доданий!");
 
-                    // Викликаємо метод оновлення меню
                     mainform.UpdateMenu();
                 }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Please fill all fields and select an image.");
+                MessageBox.Show("Не вдалось додати продукт. " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

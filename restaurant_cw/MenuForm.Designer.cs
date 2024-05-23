@@ -38,7 +38,8 @@
             this.btnPrevDrinks = new System.Windows.Forms.Button();
             this.groupBoxOrder = new System.Windows.Forms.GroupBox();
             this.productList = new System.Windows.Forms.ListBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnMakeOrder = new System.Windows.Forms.Button();
+            this.lblPriceOrder = new System.Windows.Forms.Label();
             this.menuTabControl.SuspendLayout();
             this.tabPageDish.SuspendLayout();
             this.tabPageDrink.SuspendLayout();
@@ -142,8 +143,9 @@
             // 
             // groupBoxOrder
             // 
+            this.groupBoxOrder.Controls.Add(this.lblPriceOrder);
             this.groupBoxOrder.Controls.Add(this.productList);
-            this.groupBoxOrder.Controls.Add(this.button1);
+            this.groupBoxOrder.Controls.Add(this.btnMakeOrder);
             this.groupBoxOrder.Location = new System.Drawing.Point(792, 30);
             this.groupBoxOrder.Name = "groupBoxOrder";
             this.groupBoxOrder.Size = new System.Drawing.Size(329, 707);
@@ -158,19 +160,28 @@
             this.productList.Location = new System.Drawing.Point(30, 36);
             this.productList.Name = "productList";
             this.productList.ScrollAlwaysVisible = true;
-            this.productList.Size = new System.Drawing.Size(261, 304);
+            this.productList.Size = new System.Drawing.Size(261, 284);
             this.productList.TabIndex = 21;
             // 
-            // button1
+            // btnMakeOrder
             // 
-            this.button1.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.Location = new System.Drawing.Point(30, 653);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(261, 37);
-            this.button1.TabIndex = 20;
-            this.button1.Text = "Замовити";
-            this.button1.UseVisualStyleBackColor = true;
+            this.btnMakeOrder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMakeOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMakeOrder.Location = new System.Drawing.Point(30, 653);
+            this.btnMakeOrder.Name = "btnMakeOrder";
+            this.btnMakeOrder.Size = new System.Drawing.Size(261, 37);
+            this.btnMakeOrder.TabIndex = 20;
+            this.btnMakeOrder.Text = "Замовити";
+            this.btnMakeOrder.UseVisualStyleBackColor = true;
+            this.btnMakeOrder.Click += new System.EventHandler(this.btnMakeOrder_Click);
+            // 
+            // lblPriceOrder
+            // 
+            this.lblPriceOrder.AutoSize = true;
+            this.lblPriceOrder.Location = new System.Drawing.Point(26, 323);
+            this.lblPriceOrder.Name = "lblPriceOrder";
+            this.lblPriceOrder.Size = new System.Drawing.Size(0, 20);
+            this.lblPriceOrder.TabIndex = 22;
             // 
             // MenuForm
             // 
@@ -189,6 +200,7 @@
             this.tabPageDish.ResumeLayout(false);
             this.tabPageDrink.ResumeLayout(false);
             this.groupBoxOrder.ResumeLayout(false);
+            this.groupBoxOrder.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -203,7 +215,8 @@
         private System.Windows.Forms.Button btnPrevDishes;
         private System.Windows.Forms.Button btnBackMain;
         private System.Windows.Forms.GroupBox groupBoxOrder;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnMakeOrder;
         private System.Windows.Forms.ListBox productList;
+        private System.Windows.Forms.Label lblPriceOrder;
     }
 }

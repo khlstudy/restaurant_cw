@@ -14,14 +14,14 @@ namespace restaurant_cw
     {
         private Form1 mainform;
         private MenuForm menuform;
-        private int userId; // Додайте змінну для збереження айді користувача
+        private int userId; 
 
         public ClientForm(Form1 form, MenuForm form2, int userId)
         {
             InitializeComponent();
             mainform = form;
             menuform = form2;
-            this.userId = userId; // Зберегти айді користувача у внутрішній змінній
+            this.userId = userId; 
         }
 
         private void UserForm_Load(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace restaurant_cw
         private void btnClientOrder_Click(object sender, EventArgs e)
         {
             ActiveForm.Hide();
-            menuform = new MenuForm(mainform, userId); // Передача айді користувача у конструктор MenuForm
+            menuform = new MenuForm(mainform, userId); 
             menuform.Show();
         }
 
