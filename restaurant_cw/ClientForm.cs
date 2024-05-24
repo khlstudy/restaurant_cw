@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Data;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 
@@ -20,7 +21,7 @@ namespace restaurant_cw
 
         private void UserForm_Load(object sender, EventArgs e)
         {
-
+            LoadClientOrdersIntoGridView(userId);
         }
 
         private void btnClientOrder_Click(object sender, EventArgs e)
@@ -142,5 +143,56 @@ namespace restaurant_cw
 
             return statusId;
         }
+
+        private void LoadClientOrdersIntoGridView(int clientId)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            try
+            {
+                conn.Open();
+                string query = @"SELECT 
+    s.type AS 'Статус',
+	p.name AS 'Назва продукту',
+    p.description AS 'Опис продукту',
+	o.order_price AS 'Ціна',
+    o.surname AS 'Прізвище',
+    o.name AS 'Ім\'я',
+    o.phone_number AS 'Номер телефону',
+    o.address AS 'Адреса',
+    o.order_datetime AS 'Дата і час замовлення',
+    r.type AS 'Тип отримання'
+FROM 
+    `order` o
+INNER JOIN 
+    receiving_type r ON o.fk_receiving_type_id = r.receiving_type_id
+INNER JOIN 
+    status s ON o.fk_status_id = s.status_id
+INNER JOIN 
+    order_item oi ON o.order_id = oi.fk_order_id
+INNER JOIN 
+    product p ON oi.fk_product_id = p.product_id
+WHERE 
+    o.fk_client_id = @clientId;
+";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@clientId", clientId);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                dataGridViewClientOrders.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+
     }
 }

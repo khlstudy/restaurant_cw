@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
+            this.btnBackMenu = new System.Windows.Forms.Button();
             this.groupBoxSorting = new System.Windows.Forms.GroupBox();
             this.btnSortInfo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -42,7 +43,6 @@
             this.cmbSortStatus = new System.Windows.Forms.ComboBox();
             this.DataIntoGridView = new System.Windows.Forms.DataGridView();
             this.tabPageBanquets = new System.Windows.Forms.TabPage();
-            this.btnBackMenu = new System.Windows.Forms.Button();
             this.dataGridViewBanquet = new System.Windows.Forms.DataGridView();
             this.tabControl1.SuspendLayout();
             this.tabPageOrders.SuspendLayout();
@@ -59,22 +59,35 @@
             this.tabControl1.Location = new System.Drawing.Point(5, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1375, 556);
+            this.tabControl1.Size = new System.Drawing.Size(1375, 518);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageOrders
             // 
             this.tabPageOrders.BackColor = System.Drawing.Color.Khaki;
-            this.tabPageOrders.Controls.Add(this.btnBackMenu);
             this.tabPageOrders.Controls.Add(this.groupBoxSorting);
             this.tabPageOrders.Controls.Add(this.DataIntoGridView);
             this.tabPageOrders.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.tabPageOrders.Location = new System.Drawing.Point(4, 29);
             this.tabPageOrders.Name = "tabPageOrders";
             this.tabPageOrders.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageOrders.Size = new System.Drawing.Size(1367, 523);
+            this.tabPageOrders.Size = new System.Drawing.Size(1367, 485);
             this.tabPageOrders.TabIndex = 0;
             this.tabPageOrders.Text = "Замовлення";
+            // 
+            // btnBackMenu
+            // 
+            this.btnBackMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackMenu.BackColor = System.Drawing.Color.White;
+            this.btnBackMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackMenu.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnBackMenu.Location = new System.Drawing.Point(1109, 536);
+            this.btnBackMenu.Name = "btnBackMenu";
+            this.btnBackMenu.Size = new System.Drawing.Size(261, 37);
+            this.btnBackMenu.TabIndex = 37;
+            this.btnBackMenu.Text = "Назад";
+            this.btnBackMenu.UseVisualStyleBackColor = false;
+            this.btnBackMenu.Click += new System.EventHandler(this.btnBackMenu_Click);
             // 
             // groupBoxSorting
             // 
@@ -90,7 +103,7 @@
             this.groupBoxSorting.ForeColor = System.Drawing.Color.DarkRed;
             this.groupBoxSorting.Location = new System.Drawing.Point(6, 319);
             this.groupBoxSorting.Name = "groupBoxSorting";
-            this.groupBoxSorting.Size = new System.Drawing.Size(384, 198);
+            this.groupBoxSorting.Size = new System.Drawing.Size(745, 134);
             this.groupBoxSorting.TabIndex = 31;
             this.groupBoxSorting.TabStop = false;
             this.groupBoxSorting.Text = "Сортування";
@@ -101,7 +114,7 @@
             this.btnSortInfo.BackColor = System.Drawing.Color.White;
             this.btnSortInfo.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSortInfo.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSortInfo.Location = new System.Drawing.Point(46, 155);
+            this.btnSortInfo.Location = new System.Drawing.Point(226, 91);
             this.btnSortInfo.Name = "btnSortInfo";
             this.btnSortInfo.Size = new System.Drawing.Size(261, 37);
             this.btnSortInfo.TabIndex = 32;
@@ -111,7 +124,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(175, 91);
+            this.label4.Location = new System.Drawing.Point(549, 28);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(187, 20);
             this.label4.TabIndex = 36;
@@ -123,7 +136,7 @@
             this.cmbSortTypeReceiving.Items.AddRange(new object[] {
             "Самовивіз",
             "Доставлення"});
-            this.cmbSortTypeReceiving.Location = new System.Drawing.Point(179, 114);
+            this.cmbSortTypeReceiving.Location = new System.Drawing.Point(553, 51);
             this.cmbSortTypeReceiving.Name = "cmbSortTypeReceiving";
             this.cmbSortTypeReceiving.Size = new System.Drawing.Size(178, 28);
             this.cmbSortTypeReceiving.TabIndex = 35;
@@ -134,7 +147,7 @@
             this.cmbSortPrice.Items.AddRange(new object[] {
             "Найдорожчі",
             "Найдешевші"});
-            this.cmbSortPrice.Location = new System.Drawing.Point(10, 114);
+            this.cmbSortPrice.Location = new System.Drawing.Point(384, 51);
             this.cmbSortPrice.Name = "cmbSortPrice";
             this.cmbSortPrice.Size = new System.Drawing.Size(152, 28);
             this.cmbSortPrice.TabIndex = 34;
@@ -142,7 +155,7 @@
             // lblSortPrice
             // 
             this.lblSortPrice.AutoSize = true;
-            this.lblSortPrice.Location = new System.Drawing.Point(6, 91);
+            this.lblSortPrice.Location = new System.Drawing.Point(380, 28);
             this.lblSortPrice.Name = "lblSortPrice";
             this.lblSortPrice.Size = new System.Drawing.Size(87, 20);
             this.lblSortPrice.TabIndex = 33;
@@ -208,23 +221,9 @@
             this.tabPageBanquets.Location = new System.Drawing.Point(4, 29);
             this.tabPageBanquets.Name = "tabPageBanquets";
             this.tabPageBanquets.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageBanquets.Size = new System.Drawing.Size(1367, 523);
+            this.tabPageBanquets.Size = new System.Drawing.Size(1367, 485);
             this.tabPageBanquets.TabIndex = 1;
             this.tabPageBanquets.Text = "Банкети";
-            // 
-            // btnBackMenu
-            // 
-            this.btnBackMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackMenu.BackColor = System.Drawing.Color.White;
-            this.btnBackMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBackMenu.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnBackMenu.Location = new System.Drawing.Point(1100, 474);
-            this.btnBackMenu.Name = "btnBackMenu";
-            this.btnBackMenu.Size = new System.Drawing.Size(261, 37);
-            this.btnBackMenu.TabIndex = 37;
-            this.btnBackMenu.Text = "Назад";
-            this.btnBackMenu.UseVisualStyleBackColor = false;
-            this.btnBackMenu.Click += new System.EventHandler(this.btnBackMenu_Click);
             // 
             // dataGridViewBanquet
             // 
@@ -243,6 +242,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LemonChiffon;
             this.ClientSize = new System.Drawing.Size(1382, 580);
+            this.Controls.Add(this.btnBackMenu);
             this.Controls.Add(this.tabControl1);
             this.Font = new System.Drawing.Font("Verdana", 10.2F);
             this.Margin = new System.Windows.Forms.Padding(4);

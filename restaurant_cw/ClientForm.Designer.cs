@@ -42,10 +42,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.btnOrderBanquet = new System.Windows.Forms.Button();
+            this.dataGridViewClientOrders = new System.Windows.Forms.DataGridView();
             this.tabControlClientOrders.SuspendLayout();
             this.tabPageOrders.SuspendLayout();
             this.tabPageBanquet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGuests)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClientOrder
@@ -84,6 +86,7 @@
             // 
             // tabPageOrders
             // 
+            this.tabPageOrders.Controls.Add(this.dataGridViewClientOrders);
             this.tabPageOrders.Controls.Add(this.btnClientOrder);
             this.tabPageOrders.Location = new System.Drawing.Point(4, 29);
             this.tabPageOrders.Name = "tabPageOrders";
@@ -200,6 +203,16 @@
             this.btnOrderBanquet.UseVisualStyleBackColor = true;
             this.btnOrderBanquet.Click += new System.EventHandler(this.btnOrderBanquet_Click);
             // 
+            // dataGridViewClientOrders
+            // 
+            this.dataGridViewClientOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClientOrders.Location = new System.Drawing.Point(20, 19);
+            this.dataGridViewClientOrders.Name = "dataGridViewClientOrders";
+            this.dataGridViewClientOrders.RowHeadersWidth = 51;
+            this.dataGridViewClientOrders.RowTemplate.Height = 24;
+            this.dataGridViewClientOrders.Size = new System.Drawing.Size(730, 324);
+            this.dataGridViewClientOrders.TabIndex = 23;
+            // 
             // ClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
@@ -219,6 +232,7 @@
             this.tabPageBanquet.ResumeLayout(false);
             this.tabPageBanquet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGuests)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -239,5 +253,6 @@
         private System.Windows.Forms.ComboBox comboBoxTimeBanquet;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOrderBanquet;
+        private System.Windows.Forms.DataGridView dataGridViewClientOrders;
     }
 }

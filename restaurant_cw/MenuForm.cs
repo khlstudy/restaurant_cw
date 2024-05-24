@@ -6,6 +6,8 @@ using System.Linq;
 using System.Windows.Forms;
 using MySql.Data.MySqlClient;
 using System.Globalization;
+using MySqlX.XDevAPI;
+using Org.BouncyCastle.Tls;
 
 namespace restaurant_cw
 {
@@ -33,6 +35,7 @@ namespace restaurant_cw
         private Dictionary<string, decimal> productPrices; 
         private Dictionary<string, int> orderedProducts;
 
+        private bool isClient;
         public MenuForm(Form1 form, int userId)
         {
             InitializeComponent();
@@ -52,6 +55,8 @@ namespace restaurant_cw
 
             bool isClient = CheckClientExists(userId);
             DisplayFields(isClient);
+
+            this.isClient = isClient;
         }
 
         private void LoadClientData(int clientId)
@@ -515,6 +520,10 @@ namespace restaurant_cw
 
         private void btnMakeOrder_Click(object sender, EventArgs e)
         {
+            MakeOrder(isClient);
+        }
+        private void MakeOrder(bool isClient)
+        {
             string name = txtFirstName.Text;
             string surname = txtLastName.Text;
             string phone_number = txtPhoneNumber.Text;
@@ -529,9 +538,21 @@ namespace restaurant_cw
                 {
                     conn.Open();
 
-                    string query = "INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id) " +
-                                   "VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id); " +
-                                   "SELECT LAST_INSERT_ID();";
+                    string query;
+                    if (isClient)
+                    {
+                        // Для клієнта, який вже зареєстрований
+                        query = @"INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id, fk_client_id) 
+                          VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id, @fk_client_id); 
+                          SELECT LAST_INSERT_ID();";
+                    }
+                    else
+                    {
+                        // Для нового клієнта
+                        query = @"INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id) 
+                          VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id); 
+                          SELECT LAST_INSERT_ID();";
+                    }
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@name", name);
@@ -541,6 +562,13 @@ namespace restaurant_cw
                     cmd.Parameters.AddWithValue("@order_price", order_price);
                     cmd.Parameters.AddWithValue("@fk_receiving_type_id", GetReceivingTypeId(order_type));
                     cmd.Parameters.AddWithValue("@fk_status_id", GetDefaultStatusId());
+
+                    if (isClient)
+                    {
+                        // Якщо клієнт вже зареєстрований, додамо його id в замовлення
+                        cmd.Parameters.AddWithValue("@fk_client_id", userId);
+                    }
+
                     int lastInsertedOrderId = Convert.ToInt32(cmd.ExecuteScalar());
 
                     InsertOrderItems(lastInsertedOrderId);
@@ -566,6 +594,7 @@ namespace restaurant_cw
                 MessageBox.Show("Будь ласка, заповніть всі поля.", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
 
         private int GetReceivingTypeId(string orderType)

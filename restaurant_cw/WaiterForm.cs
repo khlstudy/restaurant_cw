@@ -20,8 +20,9 @@ namespace restaurant_cw
         private void WaiterForm_Load(object sender, EventArgs e)
         {
             LoadDataIntoGridView();
+            LoadDataIntoBanquetGridView();
             DataIntoGridView.Columns["№"].Width = DataIntoGridView.Columns["№"].Width / 4;
-
+            dataGridViewBanquet.Columns["Статус"].Width = DataIntoGridView.Columns["№"].Width * 6;
         }
 
         private void LoadDataIntoGridView(string orderBy = "o.order_id DESC")
@@ -100,18 +101,44 @@ namespace restaurant_cw
                 DataIntoGridView.Columns.Add(doneButtonColumn);
             }
 
-            DataIntoGridView.CellContentClick += dataGridView1_CellContentClick;
-            DataIntoGridView.CellFormatting += DataIntoGridView_CellFormatting;
+            if (dataGridViewBanquet.Columns["waitCallButtonColumn"] == null)
+            {
+                DataGridViewButtonColumn waitCallButtonColumn = new DataGridViewButtonColumn();
+                waitCallButtonColumn.HeaderText = "Очікуйте дзвінок";
+                waitCallButtonColumn.Name = "waitCallButtonColumn";
+                waitCallButtonColumn.Text = "Очікуйте дзвінок";
+                waitCallButtonColumn.UseColumnTextForButtonValue = true;
+                dataGridViewBanquet.Columns.Add(waitCallButtonColumn);
+                waitCallButtonColumn.Width *= 2;
 
+                DataGridViewButtonColumn cancelButtonColumn = new DataGridViewButtonColumn();
+                cancelButtonColumn.HeaderText = "Відхилити";
+                cancelButtonColumn.Name = "cancelButtonColumn";
+                cancelButtonColumn.Text = "Відхилити";
+                cancelButtonColumn.UseColumnTextForButtonValue = true;
+                dataGridViewBanquet.Columns.Add(cancelButtonColumn);
+
+                DataGridViewButtonColumn doneButtonColumn = new DataGridViewButtonColumn();
+                doneButtonColumn.HeaderText = "Виконано";
+                doneButtonColumn.Name = "doneButtonColumn";
+                doneButtonColumn.Text = "Виконано";
+                doneButtonColumn.UseColumnTextForButtonValue = true;
+                dataGridViewBanquet.Columns.Add(doneButtonColumn);
+            }
+
+            DataIntoGridView.CellContentClick += DataIntoGridView_CellContentClick;
+            DataIntoGridView.CellFormatting += DataGridInfoView_CellFormatting;
+            dataGridViewBanquet.CellContentClick += dataGridViewBanquet_CellContentClick;
+            dataGridViewBanquet.CellFormatting += DataGridBanquetView_CellFormatting;
         }
 
-        private void DataIntoGridView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        private void DataGridInfoView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
                 if (DataIntoGridView.Columns[e.ColumnIndex].Name == "approveButtonColumn")
                 {
-                    e.CellStyle.BackColor = Color.Green;
+                    e.CellStyle.BackColor = Color.Blue;
                 }
                 else if (DataIntoGridView.Columns[e.ColumnIndex].Name == "cancelButtonColumn")
                 {
@@ -119,12 +146,30 @@ namespace restaurant_cw
                 }
                 else if (DataIntoGridView.Columns[e.ColumnIndex].Name == "doneButtonColumn")
                 {
-                    e.CellStyle.BackColor = Color.Blue;
+                    e.CellStyle.BackColor = Color.Green;
                 }
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void DataGridBanquetView_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "waitCallButtonColumn")
+                {
+                    e.CellStyle.BackColor = Color.Blue;
+                }
+                else if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "cancelButtonColumn")
+                {
+                    e.CellStyle.BackColor = Color.Red;
+                }
+                else if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "doneButtonColumn")
+                {
+                    e.CellStyle.BackColor = Color.Green;
+                }
+            }
+        }
+        private void DataIntoGridView_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
             {
@@ -142,6 +187,27 @@ namespace restaurant_cw
                 {
                     int orderId = Convert.ToInt32(DataIntoGridView.Rows[e.RowIndex].Cells["№"].Value);
                     UpdateOrderStatus(orderId, "Виконано");
+                }
+            }
+        }
+        private void dataGridViewBanquet_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex >= 0)
+            {
+                if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "waitCallButtonColumn")
+                {
+                    int banquetId = Convert.ToInt32(dataGridViewBanquet.Rows[e.RowIndex].Cells["№"].Value);
+                    UpdateBanquetStatus(banquetId, "Очікуйте дзвінок");
+                }
+                else if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "cancelButtonColumn")
+                {
+                    int banquetId = Convert.ToInt32(dataGridViewBanquet.Rows[e.RowIndex].Cells["№"].Value);
+                    UpdateBanquetStatus(banquetId, "Відхилено");
+                }
+                else if (dataGridViewBanquet.Columns[e.ColumnIndex].Name == "doneButtonColumn")
+                {
+                    int banquetId = Convert.ToInt32(dataGridViewBanquet.Rows[e.RowIndex].Cells["№"].Value);
+                    UpdateBanquetStatus(banquetId, "Виконано");
                 }
             }
         }
@@ -203,6 +269,61 @@ namespace restaurant_cw
         }
 
 
+        public void UpdateBanquetStatus(int banquetId, string newStatus)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            string existingStatus = "";
+            bool statusUpdated = false;
+
+            try
+            {
+                conn.Open();
+
+                string getStatusQuery = "SELECT s.type FROM banquet b INNER JOIN status s ON b.fk_status_id = s.status_id WHERE b.banquet_id = @banquetId";
+                MySqlCommand getStatusCmd = new MySqlCommand(getStatusQuery, conn);
+                getStatusCmd.Parameters.AddWithValue("@banquetId", banquetId);
+                object result = getStatusCmd.ExecuteScalar();
+                if (result != null)
+                {
+                    existingStatus = result.ToString();
+                }
+
+                if (existingStatus != newStatus)
+                {
+                    string updateQuery = "UPDATE banquet SET fk_status_id = @newStatus WHERE banquet_id = @banquetId";
+                    MySqlCommand cmd = new MySqlCommand(updateQuery, conn);
+                    cmd.Parameters.AddWithValue("@newStatus", GetStatusId(newStatus));
+                    cmd.Parameters.AddWithValue("@banquetId", banquetId);
+                    int rowsAffected = cmd.ExecuteNonQuery();
+                    if (rowsAffected > 0 && rowsAffected < 2)
+                    {
+                        statusUpdated = true;
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Не вдалося оновити статус банкету №{banquetId}.");
+                    }
+                }
+                else
+                {
+                    statusUpdated = true;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+
+            if (statusUpdated)
+            {
+                MessageBox.Show($"Статус банкету №{banquetId} було оновлено на '{newStatus}'.");
+                LoadDataIntoBanquetGridView();
+            }
+        }
 
         private int GetStatusId(string statusType)
         {
@@ -236,7 +357,7 @@ namespace restaurant_cw
 
             return statusId;
         }
-
+        //СОРТУВАННЯ
         private void btnSortInfo_Click(object sender, EventArgs e)
         {
             string orderBy = "o.order_id DESC"; 
@@ -305,6 +426,44 @@ namespace restaurant_cw
         {
             ActiveForm.Hide();
             mainform.Show();
+        }
+        //БАНКЕТИ
+        private void LoadDataIntoBanquetGridView() 
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            try
+            {
+                conn.Open();
+                string query = @"SELECT b.banquet_id AS '№', 
+       b.banquet_datetime AS 'Дата і час', 
+       b.number_guests AS 'Кількість гостей', 
+       b.additional_wishes AS 'Додаткові побажання', 
+       b.sending_datetime AS 'Час оформлення', 
+       c.surname AS 'Прізвище', 
+       c.name AS 'Ім\'я', 
+       c.phone_number AS 'Номер телефону',
+       s.type AS 'Статус'
+FROM banquet b
+INNER JOIN status s ON b.fk_status_id = s.status_id
+INNER JOIN client c ON b.fk_client_id = c.client_id
+ORDER BY b.banquet_id DESC;";
+
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                dataGridViewBanquet.DataSource = dataTable; 
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
         }
     }
 }
