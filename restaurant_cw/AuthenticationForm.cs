@@ -124,7 +124,8 @@ namespace restaurant_cw
                         }
                         else if (position == "Офіціант")
                         {
-                            WaiterForm waiterForm = new WaiterForm(userId);
+                            WaiterForm waiterForm = new WaiterForm(userId, mainform);
+
                             waiterForm.Show();
                         }
 
