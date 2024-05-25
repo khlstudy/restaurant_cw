@@ -30,7 +30,6 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
-            this.btnBackMenu = new System.Windows.Forms.Button();
             this.groupBoxSorting = new System.Windows.Forms.GroupBox();
             this.btnSortInfo = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.DataIntoGridView = new System.Windows.Forms.DataGridView();
             this.tabPageBanquets = new System.Windows.Forms.TabPage();
             this.dataGridViewBanquet = new System.Windows.Forms.DataGridView();
+            this.btnBackMenu = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPageOrders.SuspendLayout();
             this.groupBoxSorting.SuspendLayout();
@@ -74,20 +74,6 @@
             this.tabPageOrders.Size = new System.Drawing.Size(1367, 485);
             this.tabPageOrders.TabIndex = 0;
             this.tabPageOrders.Text = "Замовлення";
-            // 
-            // btnBackMenu
-            // 
-            this.btnBackMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBackMenu.BackColor = System.Drawing.Color.White;
-            this.btnBackMenu.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnBackMenu.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnBackMenu.Location = new System.Drawing.Point(1109, 536);
-            this.btnBackMenu.Name = "btnBackMenu";
-            this.btnBackMenu.Size = new System.Drawing.Size(261, 37);
-            this.btnBackMenu.TabIndex = 37;
-            this.btnBackMenu.Text = "Назад";
-            this.btnBackMenu.UseVisualStyleBackColor = false;
-            this.btnBackMenu.Click += new System.EventHandler(this.btnBackMenu_Click);
             // 
             // groupBoxSorting
             // 
@@ -197,7 +183,7 @@
             this.cmbSortStatus.Items.AddRange(new object[] {
             "Схвалено",
             "Відхилено",
-            "Доставлено"});
+            "Виконано"});
             this.cmbSortStatus.Location = new System.Drawing.Point(179, 51);
             this.cmbSortStatus.Name = "cmbSortStatus";
             this.cmbSortStatus.Size = new System.Drawing.Size(178, 28);
@@ -235,6 +221,20 @@
             this.dataGridViewBanquet.RowTemplate.Height = 24;
             this.dataGridViewBanquet.Size = new System.Drawing.Size(1355, 290);
             this.dataGridViewBanquet.TabIndex = 1;
+            // 
+            // btnBackMenu
+            // 
+            this.btnBackMenu.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackMenu.BackColor = System.Drawing.Color.White;
+            this.btnBackMenu.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackMenu.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnBackMenu.Location = new System.Drawing.Point(1109, 536);
+            this.btnBackMenu.Name = "btnBackMenu";
+            this.btnBackMenu.Size = new System.Drawing.Size(261, 37);
+            this.btnBackMenu.TabIndex = 37;
+            this.btnBackMenu.Text = "Назад";
+            this.btnBackMenu.UseVisualStyleBackColor = false;
+            this.btnBackMenu.Click += new System.EventHandler(this.btnBackMenu_Click);
             // 
             // WaiterForm
             // 

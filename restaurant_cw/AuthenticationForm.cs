@@ -11,6 +11,7 @@ using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 using System.Xml.Linq;
 using MySql.Data.MySqlClient;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
+using System.Security.Cryptography;
 
 namespace restaurant_cw
 {
@@ -36,12 +37,29 @@ namespace restaurant_cw
             mainform.Show();
         }
 
+        private string HashPassword(string password)
+        {
+            using (SHA256 sha256 = SHA256.Create())
+            {
+                byte[] bytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
+                StringBuilder builder = new StringBuilder();
+                foreach (byte b in bytes)
+                {
+                    builder.Append(b.ToString("x2"));
+                }
+                return builder.ToString();
+            }
+        }
+
         private void btnAuthentication_Click(object sender, EventArgs e)
         {
             string login = txtLogin.Text;
             string password = txtPassword.Text;
-            if (login != "" && password != "")
+
+            if (!string.IsNullOrEmpty(login) && !string.IsNullOrEmpty(password))
             {
+                string hashedPassword = HashPassword(password); 
+
                 MySqlConnection conn = DBUtils.GetDBConnection();
                 try
                 {
@@ -51,19 +69,18 @@ namespace restaurant_cw
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@login", login);
-                    cmd.Parameters.AddWithValue("@password", password);
+                    cmd.Parameters.AddWithValue("@password", hashedPassword);
                     object result = cmd.ExecuteScalar();
 
-                    if (result != null) 
+                    if (result != null)
                     {
-                        int userId = Convert.ToInt32(result); 
+                        int userId = Convert.ToInt32(result);
                         MessageBox.Show("Успішний вхід!", "Ви увійшли в акаунт", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
                         txtLogin.Clear();
                         txtPassword.Clear();
 
                         ClientForm clientForm = new ClientForm(mainform, menuform, userId);
-
                         clientForm.Show();
                         this.Hide();
                     }
@@ -74,7 +91,7 @@ namespace restaurant_cw
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show("Не вдалось увійти. Помилка: " + ex.Message,"Помилка" , MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Не вдалось увійти. Помилка: " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 finally
                 {
@@ -85,8 +102,8 @@ namespace restaurant_cw
             {
                 MessageBox.Show("Заповніть всі поля", "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
         }
+
 
         private void btnAuthenticationAdmin_Click(object sender, EventArgs e)
         {
@@ -96,6 +113,7 @@ namespace restaurant_cw
 
             if (loginA != "" && passwordA != "" && position != "")
             {
+                string hashedPasswordA = HashPassword(passwordA);
                 MySqlConnection conn = DBUtils.GetDBConnection();
                 try
                 {
@@ -105,7 +123,7 @@ namespace restaurant_cw
 
                     MySqlCommand cmd = new MySqlCommand(query, conn);
                     cmd.Parameters.AddWithValue("@login", loginA);
-                    cmd.Parameters.AddWithValue("@password", passwordA);
+                    cmd.Parameters.AddWithValue("@password", hashedPasswordA);
                     cmd.Parameters.AddWithValue("@position", position);
                     object result = cmd.ExecuteScalar();
 

@@ -32,7 +32,9 @@
             this.btnBackMain = new System.Windows.Forms.Button();
             this.tabControlClientOrders = new System.Windows.Forms.TabControl();
             this.tabPageOrders = new System.Windows.Forms.TabPage();
+            this.dataGridViewClientOrders = new System.Windows.Forms.DataGridView();
             this.tabPageBanquet = new System.Windows.Forms.TabPage();
+            this.btnOrderBanquet = new System.Windows.Forms.Button();
             this.comboBoxTimeBanquet = new System.Windows.Forms.ComboBox();
             this.label1 = new System.Windows.Forms.Label();
             this.numericUpDownGuests = new System.Windows.Forms.NumericUpDown();
@@ -41,13 +43,13 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnOrderBanquet = new System.Windows.Forms.Button();
-            this.dataGridViewClientOrders = new System.Windows.Forms.DataGridView();
+            this.dataGridViewBanquet = new System.Windows.Forms.DataGridView();
             this.tabControlClientOrders.SuspendLayout();
             this.tabPageOrders.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).BeginInit();
             this.tabPageBanquet.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGuests)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBanquet)).BeginInit();
             this.SuspendLayout();
             // 
             // btnClientOrder
@@ -96,8 +98,19 @@
             this.tabPageOrders.Text = "Ваші замовлення";
             this.tabPageOrders.UseVisualStyleBackColor = true;
             // 
+            // dataGridViewClientOrders
+            // 
+            this.dataGridViewClientOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClientOrders.Location = new System.Drawing.Point(20, 19);
+            this.dataGridViewClientOrders.Name = "dataGridViewClientOrders";
+            this.dataGridViewClientOrders.RowHeadersWidth = 51;
+            this.dataGridViewClientOrders.RowTemplate.Height = 24;
+            this.dataGridViewClientOrders.Size = new System.Drawing.Size(730, 324);
+            this.dataGridViewClientOrders.TabIndex = 23;
+            // 
             // tabPageBanquet
             // 
+            this.tabPageBanquet.Controls.Add(this.dataGridViewBanquet);
             this.tabPageBanquet.Controls.Add(this.btnOrderBanquet);
             this.tabPageBanquet.Controls.Add(this.comboBoxTimeBanquet);
             this.tabPageBanquet.Controls.Add(this.label1);
@@ -114,6 +127,18 @@
             this.tabPageBanquet.TabIndex = 1;
             this.tabPageBanquet.Text = "Ваші банкети";
             this.tabPageBanquet.UseVisualStyleBackColor = true;
+            // 
+            // btnOrderBanquet
+            // 
+            this.btnOrderBanquet.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnOrderBanquet.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnOrderBanquet.Location = new System.Drawing.Point(489, 363);
+            this.btnOrderBanquet.Name = "btnOrderBanquet";
+            this.btnOrderBanquet.Size = new System.Drawing.Size(261, 37);
+            this.btnOrderBanquet.TabIndex = 23;
+            this.btnOrderBanquet.Text = "Оформити банкет";
+            this.btnOrderBanquet.UseVisualStyleBackColor = true;
+            this.btnOrderBanquet.Click += new System.EventHandler(this.btnOrderBanquet_Click);
             // 
             // comboBoxTimeBanquet
             // 
@@ -191,27 +216,15 @@
             this.label4.TabIndex = 13;
             this.label4.Text = "Дата банкету";
             // 
-            // btnOrderBanquet
+            // dataGridViewBanquet
             // 
-            this.btnOrderBanquet.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.btnOrderBanquet.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnOrderBanquet.Location = new System.Drawing.Point(489, 363);
-            this.btnOrderBanquet.Name = "btnOrderBanquet";
-            this.btnOrderBanquet.Size = new System.Drawing.Size(261, 37);
-            this.btnOrderBanquet.TabIndex = 23;
-            this.btnOrderBanquet.Text = "Оформити банкет";
-            this.btnOrderBanquet.UseVisualStyleBackColor = true;
-            this.btnOrderBanquet.Click += new System.EventHandler(this.btnOrderBanquet_Click);
-            // 
-            // dataGridViewClientOrders
-            // 
-            this.dataGridViewClientOrders.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClientOrders.Location = new System.Drawing.Point(20, 19);
-            this.dataGridViewClientOrders.Name = "dataGridViewClientOrders";
-            this.dataGridViewClientOrders.RowHeadersWidth = 51;
-            this.dataGridViewClientOrders.RowTemplate.Height = 24;
-            this.dataGridViewClientOrders.Size = new System.Drawing.Size(730, 324);
-            this.dataGridViewClientOrders.TabIndex = 23;
+            this.dataGridViewBanquet.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewBanquet.Location = new System.Drawing.Point(17, 41);
+            this.dataGridViewBanquet.Name = "dataGridViewBanquet";
+            this.dataGridViewBanquet.RowHeadersWidth = 51;
+            this.dataGridViewBanquet.RowTemplate.Height = 24;
+            this.dataGridViewBanquet.Size = new System.Drawing.Size(451, 324);
+            this.dataGridViewBanquet.TabIndex = 24;
             // 
             // ClientForm
             // 
@@ -229,10 +242,11 @@
             this.Load += new System.EventHandler(this.UserForm_Load);
             this.tabControlClientOrders.ResumeLayout(false);
             this.tabPageOrders.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).EndInit();
             this.tabPageBanquet.ResumeLayout(false);
             this.tabPageBanquet.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDownGuests)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClientOrders)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewBanquet)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -254,5 +268,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnOrderBanquet;
         private System.Windows.Forms.DataGridView dataGridViewClientOrders;
+        private System.Windows.Forms.DataGridView dataGridViewBanquet;
     }
 }

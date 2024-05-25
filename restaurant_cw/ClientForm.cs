@@ -22,6 +22,7 @@ namespace restaurant_cw
         private void UserForm_Load(object sender, EventArgs e)
         {
             LoadClientOrdersIntoGridView(userId);
+            LoadClientBanquetIntoGridView(userId);
         }
 
         private void btnClientOrder_Click(object sender, EventArgs e)
@@ -183,6 +184,44 @@ WHERE
                 adapter.Fill(dataTable);
 
                 dataGridViewClientOrders.DataSource = dataTable;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Помилка: " + ex.Message);
+            }
+            finally
+            {
+                conn.Close();
+            }
+        }
+        private void LoadClientBanquetIntoGridView(int clientId)
+        {
+            MySqlConnection conn = DBUtils.GetDBConnection();
+            try
+            {
+                conn.Open();
+                string query = @"SELECT 
+    s.type AS 'Статус',
+    b.banquet_datetime AS 'Час проведення', 
+    b.number_guests AS 'Кількість гостей', 
+    b.additional_wishes AS 'Додаткові побажання', 
+    b.sending_datetime AS 'Час оформлення'
+FROM 
+    banquet b
+JOIN 
+    status s ON b.fk_status_id = s.status_id
+WHERE 
+    b.fk_client_id = @clientId;
+
+";
+                MySqlCommand cmd = new MySqlCommand(query, conn);
+                cmd.Parameters.AddWithValue("@clientId", clientId);
+
+                MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+
+                dataGridViewBanquet.DataSource = dataTable;
             }
             catch (Exception ex)
             {

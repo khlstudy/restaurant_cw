@@ -386,9 +386,9 @@ namespace restaurant_cw
                 {
                     orderBy = "s.type = 'Відхилено' DESC, " + orderBy;
                 }
-                else if (selectedStatus == "Доставлено")
+                else if (selectedStatus == "Виконано")
                 {
-                    orderBy = "s.type = 'Доставлено' DESC, " + orderBy;
+                    orderBy = "s.type = 'Виконано' DESC, " + orderBy;
                 }
             }
 
