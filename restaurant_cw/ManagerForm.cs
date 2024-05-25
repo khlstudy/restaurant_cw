@@ -413,6 +413,8 @@ namespace restaurant_cw
                 txtNameEmployee.Clear();
                 txtPhoneEmployee.Clear();
                 cmbEmployeeType.SelectedIndex = -1;
+
+                LoadDataGridViewEmployee();
             }
             catch (Exception ex)
             {
@@ -520,7 +522,12 @@ namespace restaurant_cw
                     cmd.ExecuteNonQuery();
 
                     MessageBox.Show("Інформація про працівника оновлена!", "Оновлено", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                    txtLoginEmployee.Clear();
+                    txtPasswordEmployee.Clear();
+                    txtSurnameEmployee.Clear();
+                    txtNameEmployee.Clear();
+                    txtPhoneEmployee.Clear();
+                    cmbEmployeeType.SelectedIndex = -1;
                     LoadDataGridViewEmployee();
                 }
             }
@@ -560,7 +567,7 @@ namespace restaurant_cw
                     {
                         MessageBox.Show("Працівника з таким логіном не знайдено.");
                     }
-
+                    ResetAutoIncrement("employee", "employee_id");
                     LoadDataGridViewEmployee();
                 }
             }
@@ -721,7 +728,7 @@ FROM client;
                            "FROM order_item oi " +
                            "JOIN product p ON oi.fk_product_id = p.product_id " +
                            "JOIN `order` o ON oi.fk_order_id = o.order_id " +
-                           "WHERE o.fk_status_id = 1";
+                           "WHERE o.fk_status_id = 3";
 
             ExecuteAndDisplayQueryResult(query, lblTotalRevenue);
         }

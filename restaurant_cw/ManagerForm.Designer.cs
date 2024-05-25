@@ -342,11 +342,11 @@
             this.dataGridViewClints.BackgroundColor = System.Drawing.Color.Bisque;
             this.dataGridViewClints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewClints.GridColor = System.Drawing.Color.Bisque;
-            this.dataGridViewClints.Location = new System.Drawing.Point(35, 16);
+            this.dataGridViewClints.Location = new System.Drawing.Point(55, 16);
             this.dataGridViewClints.Name = "dataGridViewClints";
             this.dataGridViewClints.RowHeadersWidth = 51;
             this.dataGridViewClints.RowTemplate.Height = 24;
-            this.dataGridViewClints.Size = new System.Drawing.Size(689, 241);
+            this.dataGridViewClints.Size = new System.Drawing.Size(654, 443);
             this.dataGridViewClints.TabIndex = 4;
             // 
             // tabPageEmployee
@@ -618,9 +618,9 @@
             this.label17.AutoSize = true;
             this.label17.Location = new System.Drawing.Point(28, 268);
             this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(218, 20);
+            this.label17.Size = new System.Drawing.Size(318, 20);
             this.label17.TabIndex = 9;
-            this.label17.Text = "Заробіток із замовлень:";
+            this.label17.Text = "Заробіток із виконаних замовлень:";
             // 
             // label16
             // 
