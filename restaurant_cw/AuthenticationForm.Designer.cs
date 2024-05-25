@@ -37,13 +37,13 @@
             this.label2 = new System.Windows.Forms.Label();
             this.txtPassword = new System.Windows.Forms.TextBox();
             this.OpenAdminTabContcol = new System.Windows.Forms.TabPage();
+            this.label5 = new System.Windows.Forms.Label();
+            this.сBoxEmployeeType = new System.Windows.Forms.ComboBox();
             this.txtLoginAdmin = new System.Windows.Forms.TextBox();
             this.btnAuthenticationAdmin = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.txtPasswordAdmin = new System.Windows.Forms.TextBox();
-            this.сBoxEmployeeType = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.OpenAccontTabContcol.SuspendLayout();
             this.OpenClientTabContcol.SuspendLayout();
             this.OpenAdminTabContcol.SuspendLayout();
@@ -52,13 +52,16 @@
             // btnBackMain
             // 
             this.btnBackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackMain.BackColor = System.Drawing.Color.AliceBlue;
             this.btnBackMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackMain.ForeColor = System.Drawing.Color.Navy;
             this.btnBackMain.Location = new System.Drawing.Point(629, 467);
             this.btnBackMain.Name = "btnBackMain";
             this.btnBackMain.Size = new System.Drawing.Size(123, 37);
             this.btnBackMain.TabIndex = 15;
             this.btnBackMain.Text = "Назад";
-            this.btnBackMain.UseVisualStyleBackColor = true;
+            this.btnBackMain.UseVisualStyleBackColor = false;
             this.btnBackMain.Click += new System.EventHandler(this.btnBackMain_Click);
             // 
             // OpenAccontTabContcol
@@ -89,6 +92,7 @@
             // 
             // txtLogin
             // 
+            this.txtLogin.BackColor = System.Drawing.Color.AliceBlue;
             this.txtLogin.Location = new System.Drawing.Point(211, 98);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(261, 28);
@@ -96,18 +100,22 @@
             // 
             // btnAuthentication
             // 
+            this.btnAuthentication.BackColor = System.Drawing.Color.AliceBlue;
             this.btnAuthentication.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAuthentication.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAuthentication.ForeColor = System.Drawing.Color.Navy;
             this.btnAuthentication.Location = new System.Drawing.Point(254, 236);
             this.btnAuthentication.Name = "btnAuthentication";
             this.btnAuthentication.Size = new System.Drawing.Size(176, 49);
             this.btnAuthentication.TabIndex = 18;
             this.btnAuthentication.Text = "Увійти";
-            this.btnAuthentication.UseVisualStyleBackColor = true;
+            this.btnAuthentication.UseVisualStyleBackColor = false;
             this.btnAuthentication.Click += new System.EventHandler(this.btnAuthentication_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
+            this.label1.ForeColor = System.Drawing.Color.Navy;
             this.label1.Location = new System.Drawing.Point(207, 75);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(56, 20);
@@ -117,6 +125,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
+            this.label2.ForeColor = System.Drawing.Color.Navy;
             this.label2.Location = new System.Drawing.Point(207, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(74, 20);
@@ -125,6 +134,7 @@
             // 
             // txtPassword
             // 
+            this.txtPassword.BackColor = System.Drawing.Color.AliceBlue;
             this.txtPassword.Location = new System.Drawing.Point(211, 163);
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(261, 28);
@@ -148,52 +158,19 @@
             this.OpenAdminTabContcol.Text = "Працівники";
             this.OpenAdminTabContcol.UseVisualStyleBackColor = true;
             // 
-            // txtLoginAdmin
+            // label5
             // 
-            this.txtLoginAdmin.Location = new System.Drawing.Point(211, 98);
-            this.txtLoginAdmin.Name = "txtLoginAdmin";
-            this.txtLoginAdmin.Size = new System.Drawing.Size(261, 28);
-            this.txtLoginAdmin.TabIndex = 20;
-            // 
-            // btnAuthenticationAdmin
-            // 
-            this.btnAuthenticationAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnAuthenticationAdmin.Location = new System.Drawing.Point(254, 300);
-            this.btnAuthenticationAdmin.Name = "btnAuthenticationAdmin";
-            this.btnAuthenticationAdmin.Size = new System.Drawing.Size(176, 49);
-            this.btnAuthenticationAdmin.TabIndex = 23;
-            this.btnAuthenticationAdmin.Text = "Увійти";
-            this.btnAuthenticationAdmin.UseVisualStyleBackColor = true;
-            this.btnAuthenticationAdmin.Click += new System.EventHandler(this.btnAuthenticationAdmin_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(207, 75);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 20);
-            this.label3.TabIndex = 19;
-            this.label3.Text = "Логін";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(207, 140);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(74, 20);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Пароль";
-            // 
-            // txtPasswordAdmin
-            // 
-            this.txtPasswordAdmin.Location = new System.Drawing.Point(211, 163);
-            this.txtPasswordAdmin.Name = "txtPasswordAdmin";
-            this.txtPasswordAdmin.Size = new System.Drawing.Size(261, 28);
-            this.txtPasswordAdmin.TabIndex = 22;
-            this.txtPasswordAdmin.UseSystemPasswordChar = true;
+            this.label5.AutoSize = true;
+            this.label5.ForeColor = System.Drawing.Color.Navy;
+            this.label5.Location = new System.Drawing.Point(207, 203);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Посада";
             // 
             // сBoxEmployeeType
             // 
+            this.сBoxEmployeeType.BackColor = System.Drawing.Color.AliceBlue;
             this.сBoxEmployeeType.FormattingEnabled = true;
             this.сBoxEmployeeType.Items.AddRange(new object[] {
             "Менеджер",
@@ -203,19 +180,61 @@
             this.сBoxEmployeeType.Size = new System.Drawing.Size(264, 28);
             this.сBoxEmployeeType.TabIndex = 24;
             // 
-            // label5
+            // txtLoginAdmin
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(207, 203);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 20);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Посада";
+            this.txtLoginAdmin.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtLoginAdmin.Location = new System.Drawing.Point(211, 98);
+            this.txtLoginAdmin.Name = "txtLoginAdmin";
+            this.txtLoginAdmin.Size = new System.Drawing.Size(261, 28);
+            this.txtLoginAdmin.TabIndex = 20;
+            // 
+            // btnAuthenticationAdmin
+            // 
+            this.btnAuthenticationAdmin.BackColor = System.Drawing.Color.AliceBlue;
+            this.btnAuthenticationAdmin.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAuthenticationAdmin.ForeColor = System.Drawing.Color.Navy;
+            this.btnAuthenticationAdmin.Location = new System.Drawing.Point(254, 300);
+            this.btnAuthenticationAdmin.Name = "btnAuthenticationAdmin";
+            this.btnAuthenticationAdmin.Size = new System.Drawing.Size(176, 49);
+            this.btnAuthenticationAdmin.TabIndex = 23;
+            this.btnAuthenticationAdmin.Text = "Увійти";
+            this.btnAuthenticationAdmin.UseVisualStyleBackColor = false;
+            this.btnAuthenticationAdmin.Click += new System.EventHandler(this.btnAuthenticationAdmin_Click);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.ForeColor = System.Drawing.Color.Navy;
+            this.label3.Location = new System.Drawing.Point(207, 75);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(56, 20);
+            this.label3.TabIndex = 19;
+            this.label3.Text = "Логін";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.ForeColor = System.Drawing.Color.Navy;
+            this.label4.Location = new System.Drawing.Point(207, 140);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(74, 20);
+            this.label4.TabIndex = 21;
+            this.label4.Text = "Пароль";
+            // 
+            // txtPasswordAdmin
+            // 
+            this.txtPasswordAdmin.BackColor = System.Drawing.Color.AliceBlue;
+            this.txtPasswordAdmin.Location = new System.Drawing.Point(211, 163);
+            this.txtPasswordAdmin.Name = "txtPasswordAdmin";
+            this.txtPasswordAdmin.Size = new System.Drawing.Size(261, 28);
+            this.txtPasswordAdmin.TabIndex = 22;
+            this.txtPasswordAdmin.UseSystemPasswordChar = true;
             // 
             // AuthenticationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ActiveCaption;
             this.ClientSize = new System.Drawing.Size(797, 538);
             this.Controls.Add(this.OpenAccontTabContcol);
             this.Controls.Add(this.btnBackMain);

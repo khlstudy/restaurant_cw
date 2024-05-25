@@ -37,9 +37,9 @@
             this.btnNextDrinks = new System.Windows.Forms.Button();
             this.btnPrevDrinks = new System.Windows.Forms.Button();
             this.groupBoxOrder = new System.Windows.Forms.GroupBox();
+            this.lblPriceOrder = new System.Windows.Forms.Label();
             this.productList = new System.Windows.Forms.ListBox();
             this.btnMakeOrder = new System.Windows.Forms.Button();
-            this.lblPriceOrder = new System.Windows.Forms.Label();
             this.menuTabControl.SuspendLayout();
             this.tabPageDish.SuspendLayout();
             this.tabPageDrink.SuspendLayout();
@@ -61,6 +61,7 @@
             this.tabPageDish.Controls.Add(this.btnBackMain);
             this.tabPageDish.Controls.Add(this.btnNextDishes);
             this.tabPageDish.Controls.Add(this.btnPrevDishes);
+            this.tabPageDish.ForeColor = System.Drawing.Color.Black;
             this.tabPageDish.Location = new System.Drawing.Point(4, 29);
             this.tabPageDish.Name = "tabPageDish";
             this.tabPageDish.Padding = new System.Windows.Forms.Padding(3);
@@ -73,6 +74,8 @@
             // 
             this.btnBackMain.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnBackMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackMain.ForeColor = System.Drawing.Color.Tomato;
             this.btnBackMain.Location = new System.Drawing.Point(597, 642);
             this.btnBackMain.Name = "btnBackMain";
             this.btnBackMain.Size = new System.Drawing.Size(150, 37);
@@ -85,6 +88,8 @@
             // 
             this.btnNextDishes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNextDishes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNextDishes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextDishes.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnNextDishes.Location = new System.Drawing.Point(135, 642);
             this.btnNextDishes.Name = "btnNextDishes";
             this.btnNextDishes.Size = new System.Drawing.Size(123, 37);
@@ -97,6 +102,8 @@
             // 
             this.btnPrevDishes.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPrevDishes.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevDishes.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevDishes.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnPrevDishes.Location = new System.Drawing.Point(6, 642);
             this.btnPrevDishes.Name = "btnPrevDishes";
             this.btnPrevDishes.Size = new System.Drawing.Size(123, 37);
@@ -121,6 +128,8 @@
             // 
             this.btnNextDrinks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnNextDrinks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnNextDrinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnNextDrinks.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnNextDrinks.Location = new System.Drawing.Point(135, 642);
             this.btnNextDrinks.Name = "btnNextDrinks";
             this.btnNextDrinks.Size = new System.Drawing.Size(123, 37);
@@ -133,6 +142,8 @@
             // 
             this.btnPrevDrinks.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.btnPrevDrinks.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnPrevDrinks.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnPrevDrinks.ForeColor = System.Drawing.Color.OrangeRed;
             this.btnPrevDrinks.Location = new System.Drawing.Point(6, 642);
             this.btnPrevDrinks.Name = "btnPrevDrinks";
             this.btnPrevDrinks.Size = new System.Drawing.Size(123, 37);
@@ -143,15 +154,25 @@
             // 
             // groupBoxOrder
             // 
+            this.groupBoxOrder.BackColor = System.Drawing.Color.Transparent;
             this.groupBoxOrder.Controls.Add(this.lblPriceOrder);
             this.groupBoxOrder.Controls.Add(this.productList);
             this.groupBoxOrder.Controls.Add(this.btnMakeOrder);
+            this.groupBoxOrder.ForeColor = System.Drawing.Color.White;
             this.groupBoxOrder.Location = new System.Drawing.Point(792, 30);
             this.groupBoxOrder.Name = "groupBoxOrder";
             this.groupBoxOrder.Size = new System.Drawing.Size(329, 707);
             this.groupBoxOrder.TabIndex = 19;
             this.groupBoxOrder.TabStop = false;
             this.groupBoxOrder.Text = "Оформити замовлення";
+            // 
+            // lblPriceOrder
+            // 
+            this.lblPriceOrder.AutoSize = true;
+            this.lblPriceOrder.Location = new System.Drawing.Point(26, 323);
+            this.lblPriceOrder.Name = "lblPriceOrder";
+            this.lblPriceOrder.Size = new System.Drawing.Size(0, 20);
+            this.lblPriceOrder.TabIndex = 22;
             // 
             // productList
             // 
@@ -166,27 +187,22 @@
             // btnMakeOrder
             // 
             this.btnMakeOrder.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
+            this.btnMakeOrder.BackColor = System.Drawing.Color.OrangeRed;
             this.btnMakeOrder.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnMakeOrder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMakeOrder.Location = new System.Drawing.Point(30, 653);
             this.btnMakeOrder.Name = "btnMakeOrder";
             this.btnMakeOrder.Size = new System.Drawing.Size(261, 37);
             this.btnMakeOrder.TabIndex = 20;
             this.btnMakeOrder.Text = "Замовити";
-            this.btnMakeOrder.UseVisualStyleBackColor = true;
+            this.btnMakeOrder.UseVisualStyleBackColor = false;
             this.btnMakeOrder.Click += new System.EventHandler(this.btnMakeOrder_Click);
-            // 
-            // lblPriceOrder
-            // 
-            this.lblPriceOrder.AutoSize = true;
-            this.lblPriceOrder.Location = new System.Drawing.Point(26, 323);
-            this.lblPriceOrder.Name = "lblPriceOrder";
-            this.lblPriceOrder.Size = new System.Drawing.Size(0, 20);
-            this.lblPriceOrder.TabIndex = 22;
             // 
             // MenuForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.Tomato;
             this.ClientSize = new System.Drawing.Size(1138, 753);
             this.Controls.Add(this.groupBoxOrder);
             this.Controls.Add(this.menuTabControl);

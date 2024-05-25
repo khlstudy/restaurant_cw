@@ -8,6 +8,7 @@ using MySql.Data.MySqlClient;
 using System.Globalization;
 using MySqlX.XDevAPI;
 using Org.BouncyCastle.Tls;
+using System.Net;
 
 namespace restaurant_cw
 {
@@ -227,7 +228,11 @@ namespace restaurant_cw
                             Text = "+",
                             Location = new Point(10, 265),
                             Width = 30,
-                            Height = 30
+                            Height = 30,
+                            FlatStyle = FlatStyle.Flat,
+                            BackColor = Color.Tomato,
+                            ForeColor = Color.White
+
                         };
 
                         Label lblAmount = new Label
@@ -247,7 +252,10 @@ namespace restaurant_cw
                             Text = "-",
                             Location = new Point(230, 265),
                             Width = 30,
-                            Height = 30
+                            Height = 30,
+                            FlatStyle = FlatStyle.Flat,
+                            BackColor = Color.Tomato,
+                            ForeColor = Color.White
                         };
 
                         btnAddItemOrder.Click += (s, e) => UpdateProductQuantity(name, txtAmount, +1, price);
@@ -531,7 +539,15 @@ namespace restaurant_cw
             string address = txtDeliveryAddress.Text;
             decimal order_price = CalculateOrderPrice();
 
-            if (!string.IsNullOrEmpty(name) && !string.IsNullOrEmpty(surname) && !string.IsNullOrEmpty(phone_number) && !string.IsNullOrEmpty(order_type) && !string.IsNullOrEmpty(address))
+            bool isDelivery = order_type == "Доставлення";
+            bool isPickup = order_type == "Самовивіз";
+            bool areFieldsValid = !string.IsNullOrEmpty(name) &&
+                                  !string.IsNullOrEmpty(surname) &&
+                                  !string.IsNullOrEmpty(phone_number) &&
+                                  !string.IsNullOrEmpty(order_type) &&
+                                  (isPickup || (!string.IsNullOrEmpty(address)));
+
+            if (areFieldsValid)
             {
                 MySqlConnection conn = DBUtils.GetDBConnection();
                 try
@@ -541,14 +557,12 @@ namespace restaurant_cw
                     string query;
                     if (isClient)
                     {
-                        // Для клієнта, який вже зареєстрований
                         query = @"INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id, fk_client_id) 
                           VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id, @fk_client_id); 
                           SELECT LAST_INSERT_ID();";
                     }
                     else
                     {
-                        // Для нового клієнта
                         query = @"INSERT INTO `order` (surname, name, phone_number, address, order_price, order_datetime, fk_receiving_type_id, fk_status_id) 
                           VALUES (@surname, @name, @phone_number, @address, @order_price, NOW(), @fk_receiving_type_id, @fk_status_id); 
                           SELECT LAST_INSERT_ID();";
@@ -565,7 +579,6 @@ namespace restaurant_cw
 
                     if (isClient)
                     {
-                        // Якщо клієнт вже зареєстрований, додамо його id в замовлення
                         cmd.Parameters.AddWithValue("@fk_client_id", userId);
                     }
 

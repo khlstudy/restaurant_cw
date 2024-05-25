@@ -42,7 +42,7 @@ namespace restaurant_cw
             {
                 //MessageBox.Show("Openning Connection...");
                 conn.Open();
-                MessageBox.Show("Connection successful!");
+                //MessageBox.Show("Connection successful!");
             }
             catch (Exception error)
             {

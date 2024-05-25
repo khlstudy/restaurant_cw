@@ -103,11 +103,11 @@ namespace restaurant_cw
 
                         if (rowsAffected > 0)
                         {
-                            MessageBox.Show("Дані про банкет успішно додані до бази даних.");
+                            MessageBox.Show("Ви успішно оформили банкет. Чекайте на дзвінок!");
                         }
                         else
                         {
-                            MessageBox.Show("Помилка при додаванні даних про банкет до бази даних.");
+                            MessageBox.Show("Помилка при додаванні даних про банкет.");
                         }
                     }
                 }

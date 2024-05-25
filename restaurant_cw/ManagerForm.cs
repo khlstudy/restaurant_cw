@@ -35,6 +35,7 @@ namespace restaurant_cw
         {
             LoadDataGridViewEmployee();
             LoadDataGridViewClients();
+            ShowProducts();
         }
 
         private void btnChooseImage_Click(object sender, EventArgs e)
@@ -105,7 +106,14 @@ namespace restaurant_cw
 
                     MessageBox.Show("Продукт був успішно доданий!");
 
+                    txtName.Clear();
+                    txtDescription.Clear();
+                    txtPrice.Clear();
+                    cmbCategory.SelectedIndex = -1;
+                    txtImagePath.Clear();
+
                     mainform.UpdateMenu();
+                    ShowProducts();
                 }
             }
             catch (Exception ex)
@@ -162,6 +170,34 @@ namespace restaurant_cw
         {
             ActiveForm.Hide();
             mainform.Show();
+        }
+        private void ResetAutoIncrement(string tableName, string primaryKeyColumn)
+        {
+            string queryMaxId = $"SELECT IFNULL(MAX({primaryKeyColumn}), 0) FROM {tableName}";
+            int maxId = 0;
+
+            try
+            {
+                using (MySqlConnection conn = DBUtils.GetDBConnection())
+                {
+                    conn.Open();
+
+                    MySqlCommand cmdMaxId = new MySqlCommand(queryMaxId, conn);
+                    object result = cmdMaxId.ExecuteScalar();
+                    if (result != null)
+                    {
+                        maxId = Convert.ToInt32(result);
+                    }
+
+                    string queryResetAutoIncrement = $"ALTER TABLE {tableName} AUTO_INCREMENT = {maxId + 1}";
+                    MySqlCommand cmdResetAutoIncrement = new MySqlCommand(queryResetAutoIncrement, conn);
+                    cmdResetAutoIncrement.ExecuteNonQuery();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не вдалось оновити AUTO_INCREMENT. " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void btnEditProduct_Click_1(object sender, EventArgs e)
@@ -244,7 +280,14 @@ namespace restaurant_cw
 
                     MessageBox.Show("Продукт був успішно відредагований!");
 
+                    txtName.Clear();
+                    txtDescription.Clear();
+                    txtPrice.Clear();
+                    cmbCategory.SelectedIndex = -1;
+                    txtImagePath.Clear();
+
                     mainform.UpdateMenu();
+                    ShowProducts();
                 }
             }
             catch (Exception ex)
@@ -270,7 +313,6 @@ namespace restaurant_cw
                 {
                     conn.Open();
 
-                    // Спочатку видалимо всі зв'язані записи з таблиці order_item
                     string deleteOrderItemsQuery = @"
                 DELETE FROM order_item 
                 WHERE fk_product_id = (SELECT product_id FROM product WHERE name = @deleteName)";
@@ -278,7 +320,6 @@ namespace restaurant_cw
                     deleteOrderItemsCmd.Parameters.AddWithValue("@deleteName", deleteName);
                     deleteOrderItemsCmd.ExecuteNonQuery();
 
-                    // Тепер видалимо сам продукт
                     string deleteProductQuery = "DELETE FROM product WHERE name = @deleteName";
                     MySqlCommand deleteProductCmd = new MySqlCommand(deleteProductQuery, conn);
                     deleteProductCmd.Parameters.AddWithValue("@deleteName", deleteName);
@@ -294,7 +335,9 @@ namespace restaurant_cw
                         MessageBox.Show("Продукт з такою назвою не знайдено.");
                     }
 
+                    ResetAutoIncrement("product", "product_id");
                     mainform.UpdateMenu();
+                    ShowProducts();
                 }
             }
             catch (Exception ex)
@@ -569,7 +612,6 @@ namespace restaurant_cw
                 string query = @"
                 SELECT client_id AS '№ клієнта', 
        login AS 'Логін', 
-       password AS 'Пароль', 
        surname AS 'Прізвище', 
        name AS 'Ім''я', 
        email AS 'Електронна пошта', 
@@ -715,6 +757,35 @@ FROM client;
             finally
             {
                 conn.Close();
+            }
+        }
+
+        private void ShowProducts()
+        {
+            string query = "SELECT p.product_id AS 'ID продукту', " +
+                           "p.name AS 'Назва', " +
+                           "p.description AS 'Опис', " +
+                           "p.price AS 'Ціна', " +
+                           "p.image_path AS 'Шлях до зображення', " +
+                           "c.name AS 'Категорія' " +
+                           "FROM product p " +
+                           "JOIN category c ON p.fk_category_id = c.category_id";
+
+            try
+            {
+                using (MySqlConnection conn = DBUtils.GetDBConnection())
+                {
+                    conn.Open();
+                    MySqlCommand cmd = new MySqlCommand(query, conn);
+                    MySqlDataAdapter adapter = new MySqlDataAdapter(cmd);
+                    DataTable dataTable = new DataTable();
+                    adapter.Fill(dataTable);
+                    dataGridViewProducts.DataSource = dataTable;
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Не вдалось завантажити продукти. " + ex.Message, "Помилка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 

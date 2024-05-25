@@ -30,7 +30,7 @@
         {
             this.tabControlMenu = new System.Windows.Forms.TabControl();
             this.tabPageMenu = new System.Windows.Forms.TabPage();
-            this.btnBackMain = new System.Windows.Forms.Button();
+            this.dataGridViewProducts = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnDeleteProduct = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -50,9 +50,19 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new System.Windows.Forms.TextBox();
             this.tabPagUsers = new System.Windows.Forms.TabPage();
-            this.tabPageMonitor = new System.Windows.Forms.TabPage();
+            this.dataGridViewClints = new System.Windows.Forms.DataGridView();
             this.tabPageEmployee = new System.Windows.Forms.TabPage();
+            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
+            this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteEmployee = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.btnEditEmployee = new System.Windows.Forms.Button();
+            this.txtEditDeleteLogin = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.cmbEmployeeType = new System.Windows.Forms.ComboBox();
+            this.txtPhoneEmployee = new System.Windows.Forms.TextBox();
+            this.label12 = new System.Windows.Forms.Label();
+            this.txtNameEmployee = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.btnRegEmployee = new System.Windows.Forms.Button();
             this.label8 = new System.Windows.Forms.Label();
@@ -62,40 +72,32 @@
             this.txtPasswordEmployee = new System.Windows.Forms.TextBox();
             this.label11 = new System.Windows.Forms.Label();
             this.txtLoginEmployee = new System.Windows.Forms.TextBox();
-            this.txtNameEmployee = new System.Windows.Forms.TextBox();
-            this.txtPhoneEmployee = new System.Windows.Forms.TextBox();
-            this.label12 = new System.Windows.Forms.Label();
-            this.cmbEmployeeType = new System.Windows.Forms.ComboBox();
-            this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.btnDeleteEmployee = new System.Windows.Forms.Button();
-            this.label13 = new System.Windows.Forms.Label();
-            this.btnEditEmployee = new System.Windows.Forms.Button();
-            this.txtEditDeleteLogin = new System.Windows.Forms.TextBox();
-            this.dataGridViewEmployee = new System.Windows.Forms.DataGridView();
-            this.dataGridViewClints = new System.Windows.Forms.DataGridView();
-            this.cmbStatisticType = new System.Windows.Forms.ComboBox();
-            this.btnShowStatistics = new System.Windows.Forms.Button();
-            this.lblTotalOrders = new System.Windows.Forms.Label();
-            this.lblTotalCustomers = new System.Windows.Forms.Label();
-            this.lblPopularItems = new System.Windows.Forms.Label();
-            this.label14 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
-            this.label16 = new System.Windows.Forms.Label();
-            this.label17 = new System.Windows.Forms.Label();
-            this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
+            this.tabPageMonitor = new System.Windows.Forms.TabPage();
             this.lblTotalRevenue = new System.Windows.Forms.Label();
+            this.label19 = new System.Windows.Forms.Label();
+            this.label18 = new System.Windows.Forms.Label();
+            this.label17 = new System.Windows.Forms.Label();
+            this.label16 = new System.Windows.Forms.Label();
+            this.label15 = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
+            this.lblPopularItems = new System.Windows.Forms.Label();
+            this.lblTotalCustomers = new System.Windows.Forms.Label();
+            this.lblTotalOrders = new System.Windows.Forms.Label();
+            this.btnShowStatistics = new System.Windows.Forms.Button();
+            this.cmbStatisticType = new System.Windows.Forms.ComboBox();
+            this.btnBackMain = new System.Windows.Forms.Button();
             this.tabControlMenu.SuspendLayout();
             this.tabPageMenu.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.tabPagUsers.SuspendLayout();
-            this.tabPageMonitor.SuspendLayout();
-            this.tabPageEmployee.SuspendLayout();
-            this.groupBox3.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClints)).BeginInit();
+            this.tabPageEmployee.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).BeginInit();
+            this.groupBox4.SuspendLayout();
+            this.groupBox3.SuspendLayout();
+            this.tabPageMonitor.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabControlMenu
@@ -113,6 +115,7 @@
             // tabPageMenu
             // 
             this.tabPageMenu.BackColor = System.Drawing.Color.IndianRed;
+            this.tabPageMenu.Controls.Add(this.dataGridViewProducts);
             this.tabPageMenu.Controls.Add(this.groupBox2);
             this.tabPageMenu.Controls.Add(this.groupBox1);
             this.tabPageMenu.Location = new System.Drawing.Point(4, 29);
@@ -122,18 +125,17 @@
             this.tabPageMenu.TabIndex = 0;
             this.tabPageMenu.Text = "Формування меню";
             // 
-            // btnBackMain
+            // dataGridViewProducts
             // 
-            this.btnBackMain.BackColor = System.Drawing.Color.Brown;
-            this.btnBackMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBackMain.ForeColor = System.Drawing.Color.White;
-            this.btnBackMain.Location = new System.Drawing.Point(666, 8);
-            this.btnBackMain.Name = "btnBackMain";
-            this.btnBackMain.Size = new System.Drawing.Size(119, 29);
-            this.btnBackMain.TabIndex = 16;
-            this.btnBackMain.Text = "Вийти";
-            this.btnBackMain.UseVisualStyleBackColor = false;
-            this.btnBackMain.Click += new System.EventHandler(this.btnBackMain_Click);
+            this.dataGridViewProducts.BackgroundColor = System.Drawing.Color.IndianRed;
+            this.dataGridViewProducts.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewProducts.GridColor = System.Drawing.Color.IndianRed;
+            this.dataGridViewProducts.Location = new System.Drawing.Point(395, 31);
+            this.dataGridViewProducts.Name = "dataGridViewProducts";
+            this.dataGridViewProducts.RowHeadersWidth = 51;
+            this.dataGridViewProducts.RowTemplate.Height = 24;
+            this.dataGridViewProducts.Size = new System.Drawing.Size(342, 241);
+            this.dataGridViewProducts.TabIndex = 4;
             // 
             // groupBox2
             // 
@@ -333,28 +335,19 @@
             this.tabPagUsers.Padding = new System.Windows.Forms.Padding(3);
             this.tabPagUsers.Size = new System.Drawing.Size(765, 481);
             this.tabPagUsers.TabIndex = 1;
-            this.tabPagUsers.Text = "Користувачі";
+            this.tabPagUsers.Text = "Клієнти";
             // 
-            // tabPageMonitor
+            // dataGridViewClints
             // 
-            this.tabPageMonitor.Controls.Add(this.lblTotalRevenue);
-            this.tabPageMonitor.Controls.Add(this.label19);
-            this.tabPageMonitor.Controls.Add(this.label18);
-            this.tabPageMonitor.Controls.Add(this.label17);
-            this.tabPageMonitor.Controls.Add(this.label16);
-            this.tabPageMonitor.Controls.Add(this.label15);
-            this.tabPageMonitor.Controls.Add(this.label14);
-            this.tabPageMonitor.Controls.Add(this.lblPopularItems);
-            this.tabPageMonitor.Controls.Add(this.lblTotalCustomers);
-            this.tabPageMonitor.Controls.Add(this.lblTotalOrders);
-            this.tabPageMonitor.Controls.Add(this.btnShowStatistics);
-            this.tabPageMonitor.Controls.Add(this.cmbStatisticType);
-            this.tabPageMonitor.Location = new System.Drawing.Point(4, 29);
-            this.tabPageMonitor.Name = "tabPageMonitor";
-            this.tabPageMonitor.Size = new System.Drawing.Size(765, 481);
-            this.tabPageMonitor.TabIndex = 2;
-            this.tabPageMonitor.Text = "Моніторинг";
-            this.tabPageMonitor.UseVisualStyleBackColor = true;
+            this.dataGridViewClints.BackgroundColor = System.Drawing.Color.Bisque;
+            this.dataGridViewClints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewClints.GridColor = System.Drawing.Color.Bisque;
+            this.dataGridViewClints.Location = new System.Drawing.Point(35, 16);
+            this.dataGridViewClints.Name = "dataGridViewClints";
+            this.dataGridViewClints.RowHeadersWidth = 51;
+            this.dataGridViewClints.RowTemplate.Height = 24;
+            this.dataGridViewClints.Size = new System.Drawing.Size(689, 241);
+            this.dataGridViewClints.TabIndex = 4;
             // 
             // tabPageEmployee
             // 
@@ -368,141 +361,17 @@
             this.tabPageEmployee.TabIndex = 3;
             this.tabPageEmployee.Text = "Працівники";
             // 
-            // groupBox3
+            // dataGridViewEmployee
             // 
-            this.groupBox3.Controls.Add(this.cmbEmployeeType);
-            this.groupBox3.Controls.Add(this.txtPhoneEmployee);
-            this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Controls.Add(this.txtNameEmployee);
-            this.groupBox3.Controls.Add(this.label7);
-            this.groupBox3.Controls.Add(this.btnRegEmployee);
-            this.groupBox3.Controls.Add(this.label8);
-            this.groupBox3.Controls.Add(this.label9);
-            this.groupBox3.Controls.Add(this.txtSurnameEmployee);
-            this.groupBox3.Controls.Add(this.label10);
-            this.groupBox3.Controls.Add(this.txtPasswordEmployee);
-            this.groupBox3.Controls.Add(this.label11);
-            this.groupBox3.Controls.Add(this.txtLoginEmployee);
-            this.groupBox3.ForeColor = System.Drawing.Color.White;
-            this.groupBox3.Location = new System.Drawing.Point(20, 20);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(342, 446);
-            this.groupBox3.TabIndex = 1;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Реєстрація нового працівника";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(33, 328);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(168, 20);
-            this.label7.TabIndex = 14;
-            this.label7.Text = "Тип співробітника";
-            // 
-            // btnRegEmployee
-            // 
-            this.btnRegEmployee.BackColor = System.Drawing.Color.Brown;
-            this.btnRegEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRegEmployee.ForeColor = System.Drawing.Color.DarkOrange;
-            this.btnRegEmployee.Location = new System.Drawing.Point(88, 385);
-            this.btnRegEmployee.Name = "btnRegEmployee";
-            this.btnRegEmployee.Size = new System.Drawing.Size(152, 39);
-            this.btnRegEmployee.TabIndex = 12;
-            this.btnRegEmployee.Text = "Зарєструвати";
-            this.btnRegEmployee.UseVisualStyleBackColor = false;
-            this.btnRegEmployee.Click += new System.EventHandler(this.btnRegEmployee_Click);
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(33, 220);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 20);
-            this.label8.TabIndex = 9;
-            this.label8.Text = "Ім\'я";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(33, 166);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(92, 20);
-            this.label9.TabIndex = 5;
-            this.label9.Text = "Прізвище";
-            // 
-            // txtSurnameEmployee
-            // 
-            this.txtSurnameEmployee.Location = new System.Drawing.Point(37, 189);
-            this.txtSurnameEmployee.Name = "txtSurnameEmployee";
-            this.txtSurnameEmployee.Size = new System.Drawing.Size(261, 28);
-            this.txtSurnameEmployee.TabIndex = 4;
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(33, 99);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(74, 20);
-            this.label10.TabIndex = 3;
-            this.label10.Text = "Пароль";
-            // 
-            // txtPasswordEmployee
-            // 
-            this.txtPasswordEmployee.Location = new System.Drawing.Point(37, 122);
-            this.txtPasswordEmployee.Name = "txtPasswordEmployee";
-            this.txtPasswordEmployee.Size = new System.Drawing.Size(261, 28);
-            this.txtPasswordEmployee.TabIndex = 2;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(33, 40);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(56, 20);
-            this.label11.TabIndex = 1;
-            this.label11.Text = "Логін";
-            // 
-            // txtLoginEmployee
-            // 
-            this.txtLoginEmployee.Location = new System.Drawing.Point(37, 63);
-            this.txtLoginEmployee.Name = "txtLoginEmployee";
-            this.txtLoginEmployee.Size = new System.Drawing.Size(261, 28);
-            this.txtLoginEmployee.TabIndex = 0;
-            // 
-            // txtNameEmployee
-            // 
-            this.txtNameEmployee.Location = new System.Drawing.Point(37, 243);
-            this.txtNameEmployee.Name = "txtNameEmployee";
-            this.txtNameEmployee.Size = new System.Drawing.Size(261, 28);
-            this.txtNameEmployee.TabIndex = 15;
-            // 
-            // txtPhoneEmployee
-            // 
-            this.txtPhoneEmployee.Location = new System.Drawing.Point(37, 297);
-            this.txtPhoneEmployee.Name = "txtPhoneEmployee";
-            this.txtPhoneEmployee.Size = new System.Drawing.Size(261, 28);
-            this.txtPhoneEmployee.TabIndex = 17;
-            // 
-            // label12
-            // 
-            this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(33, 274);
-            this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(154, 20);
-            this.label12.TabIndex = 16;
-            this.label12.Text = "Номер телефона";
-            // 
-            // cmbEmployeeType
-            // 
-            this.cmbEmployeeType.FormattingEnabled = true;
-            this.cmbEmployeeType.Items.AddRange(new object[] {
-            "Менеджер",
-            "Офіціант"});
-            this.cmbEmployeeType.Location = new System.Drawing.Point(37, 351);
-            this.cmbEmployeeType.Name = "cmbEmployeeType";
-            this.cmbEmployeeType.Size = new System.Drawing.Size(261, 28);
-            this.cmbEmployeeType.TabIndex = 2;
+            this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.Brown;
+            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridViewEmployee.GridColor = System.Drawing.Color.IndianRed;
+            this.dataGridViewEmployee.Location = new System.Drawing.Point(395, 31);
+            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
+            this.dataGridViewEmployee.RowHeadersWidth = 51;
+            this.dataGridViewEmployee.RowTemplate.Height = 24;
+            this.dataGridViewEmployee.Size = new System.Drawing.Size(342, 241);
+            this.dataGridViewEmployee.TabIndex = 3;
             // 
             // groupBox4
             // 
@@ -559,37 +428,250 @@
             this.txtEditDeleteLogin.Size = new System.Drawing.Size(261, 28);
             this.txtEditDeleteLogin.TabIndex = 13;
             // 
-            // dataGridViewEmployee
+            // groupBox3
             // 
-            this.dataGridViewEmployee.BackgroundColor = System.Drawing.Color.Brown;
-            this.dataGridViewEmployee.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewEmployee.GridColor = System.Drawing.Color.IndianRed;
-            this.dataGridViewEmployee.Location = new System.Drawing.Point(395, 31);
-            this.dataGridViewEmployee.Name = "dataGridViewEmployee";
-            this.dataGridViewEmployee.RowHeadersWidth = 51;
-            this.dataGridViewEmployee.RowTemplate.Height = 24;
-            this.dataGridViewEmployee.Size = new System.Drawing.Size(342, 241);
-            this.dataGridViewEmployee.TabIndex = 3;
+            this.groupBox3.Controls.Add(this.cmbEmployeeType);
+            this.groupBox3.Controls.Add(this.txtPhoneEmployee);
+            this.groupBox3.Controls.Add(this.label12);
+            this.groupBox3.Controls.Add(this.txtNameEmployee);
+            this.groupBox3.Controls.Add(this.label7);
+            this.groupBox3.Controls.Add(this.btnRegEmployee);
+            this.groupBox3.Controls.Add(this.label8);
+            this.groupBox3.Controls.Add(this.label9);
+            this.groupBox3.Controls.Add(this.txtSurnameEmployee);
+            this.groupBox3.Controls.Add(this.label10);
+            this.groupBox3.Controls.Add(this.txtPasswordEmployee);
+            this.groupBox3.Controls.Add(this.label11);
+            this.groupBox3.Controls.Add(this.txtLoginEmployee);
+            this.groupBox3.ForeColor = System.Drawing.Color.White;
+            this.groupBox3.Location = new System.Drawing.Point(20, 20);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(342, 446);
+            this.groupBox3.TabIndex = 1;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Реєстрація нового працівника";
             // 
-            // dataGridViewClints
+            // cmbEmployeeType
             // 
-            this.dataGridViewClints.BackgroundColor = System.Drawing.Color.Bisque;
-            this.dataGridViewClints.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridViewClints.GridColor = System.Drawing.Color.Bisque;
-            this.dataGridViewClints.Location = new System.Drawing.Point(6, 16);
-            this.dataGridViewClints.Name = "dataGridViewClints";
-            this.dataGridViewClints.RowHeadersWidth = 51;
-            this.dataGridViewClints.RowTemplate.Height = 24;
-            this.dataGridViewClints.Size = new System.Drawing.Size(753, 241);
-            this.dataGridViewClints.TabIndex = 4;
+            this.cmbEmployeeType.FormattingEnabled = true;
+            this.cmbEmployeeType.Items.AddRange(new object[] {
+            "Менеджер",
+            "Офіціант"});
+            this.cmbEmployeeType.Location = new System.Drawing.Point(37, 351);
+            this.cmbEmployeeType.Name = "cmbEmployeeType";
+            this.cmbEmployeeType.Size = new System.Drawing.Size(261, 28);
+            this.cmbEmployeeType.TabIndex = 2;
             // 
-            // cmbStatisticType
+            // txtPhoneEmployee
             // 
-            this.cmbStatisticType.FormattingEnabled = true;
-            this.cmbStatisticType.Location = new System.Drawing.Point(28, 46);
-            this.cmbStatisticType.Name = "cmbStatisticType";
-            this.cmbStatisticType.Size = new System.Drawing.Size(320, 28);
-            this.cmbStatisticType.TabIndex = 0;
+            this.txtPhoneEmployee.Location = new System.Drawing.Point(37, 297);
+            this.txtPhoneEmployee.Name = "txtPhoneEmployee";
+            this.txtPhoneEmployee.Size = new System.Drawing.Size(261, 28);
+            this.txtPhoneEmployee.TabIndex = 17;
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(33, 274);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(154, 20);
+            this.label12.TabIndex = 16;
+            this.label12.Text = "Номер телефона";
+            // 
+            // txtNameEmployee
+            // 
+            this.txtNameEmployee.Location = new System.Drawing.Point(37, 243);
+            this.txtNameEmployee.Name = "txtNameEmployee";
+            this.txtNameEmployee.Size = new System.Drawing.Size(261, 28);
+            this.txtNameEmployee.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(33, 328);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(168, 20);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Тип співробітника";
+            // 
+            // btnRegEmployee
+            // 
+            this.btnRegEmployee.BackColor = System.Drawing.Color.Brown;
+            this.btnRegEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnRegEmployee.ForeColor = System.Drawing.Color.DarkOrange;
+            this.btnRegEmployee.Location = new System.Drawing.Point(88, 385);
+            this.btnRegEmployee.Name = "btnRegEmployee";
+            this.btnRegEmployee.Size = new System.Drawing.Size(152, 39);
+            this.btnRegEmployee.TabIndex = 12;
+            this.btnRegEmployee.Text = "Зареєструвати";
+            this.btnRegEmployee.UseVisualStyleBackColor = false;
+            this.btnRegEmployee.Click += new System.EventHandler(this.btnRegEmployee_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(33, 220);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 20);
+            this.label8.TabIndex = 9;
+            this.label8.Text = "Ім\'я";
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(33, 166);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(92, 20);
+            this.label9.TabIndex = 5;
+            this.label9.Text = "Прізвище";
+            // 
+            // txtSurnameEmployee
+            // 
+            this.txtSurnameEmployee.Location = new System.Drawing.Point(37, 189);
+            this.txtSurnameEmployee.Name = "txtSurnameEmployee";
+            this.txtSurnameEmployee.Size = new System.Drawing.Size(261, 28);
+            this.txtSurnameEmployee.TabIndex = 4;
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(33, 99);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(74, 20);
+            this.label10.TabIndex = 3;
+            this.label10.Text = "Пароль";
+            // 
+            // txtPasswordEmployee
+            // 
+            this.txtPasswordEmployee.Location = new System.Drawing.Point(37, 122);
+            this.txtPasswordEmployee.Name = "txtPasswordEmployee";
+            this.txtPasswordEmployee.Size = new System.Drawing.Size(261, 28);
+            this.txtPasswordEmployee.TabIndex = 2;
+            this.txtPasswordEmployee.UseSystemPasswordChar = true;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(33, 40);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(56, 20);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Логін";
+            // 
+            // txtLoginEmployee
+            // 
+            this.txtLoginEmployee.Location = new System.Drawing.Point(37, 63);
+            this.txtLoginEmployee.Name = "txtLoginEmployee";
+            this.txtLoginEmployee.Size = new System.Drawing.Size(261, 28);
+            this.txtLoginEmployee.TabIndex = 0;
+            // 
+            // tabPageMonitor
+            // 
+            this.tabPageMonitor.Controls.Add(this.lblTotalRevenue);
+            this.tabPageMonitor.Controls.Add(this.label19);
+            this.tabPageMonitor.Controls.Add(this.label18);
+            this.tabPageMonitor.Controls.Add(this.label17);
+            this.tabPageMonitor.Controls.Add(this.label16);
+            this.tabPageMonitor.Controls.Add(this.label15);
+            this.tabPageMonitor.Controls.Add(this.label14);
+            this.tabPageMonitor.Controls.Add(this.lblPopularItems);
+            this.tabPageMonitor.Controls.Add(this.lblTotalCustomers);
+            this.tabPageMonitor.Controls.Add(this.lblTotalOrders);
+            this.tabPageMonitor.Controls.Add(this.btnShowStatistics);
+            this.tabPageMonitor.Controls.Add(this.cmbStatisticType);
+            this.tabPageMonitor.Location = new System.Drawing.Point(4, 29);
+            this.tabPageMonitor.Name = "tabPageMonitor";
+            this.tabPageMonitor.Size = new System.Drawing.Size(765, 481);
+            this.tabPageMonitor.TabIndex = 2;
+            this.tabPageMonitor.Text = "Моніторинг";
+            this.tabPageMonitor.UseVisualStyleBackColor = true;
+            // 
+            // lblTotalRevenue
+            // 
+            this.lblTotalRevenue.AutoSize = true;
+            this.lblTotalRevenue.Location = new System.Drawing.Point(329, 268);
+            this.lblTotalRevenue.Name = "lblTotalRevenue";
+            this.lblTotalRevenue.Size = new System.Drawing.Size(0, 20);
+            this.lblTotalRevenue.TabIndex = 12;
+            // 
+            // label19
+            // 
+            this.label19.AutoSize = true;
+            this.label19.ForeColor = System.Drawing.Color.Brown;
+            this.label19.Location = new System.Drawing.Point(28, 184);
+            this.label19.Name = "label19";
+            this.label19.Size = new System.Drawing.Size(153, 20);
+            this.label19.TabIndex = 11;
+            this.label19.Text = "Інша статистика";
+            // 
+            // label18
+            // 
+            this.label18.AutoSize = true;
+            this.label18.Location = new System.Drawing.Point(24, 23);
+            this.label18.Name = "label18";
+            this.label18.Size = new System.Drawing.Size(220, 20);
+            this.label18.TabIndex = 10;
+            this.label18.Text = "Виберіть проміжок часу";
+            // 
+            // label17
+            // 
+            this.label17.AutoSize = true;
+            this.label17.Location = new System.Drawing.Point(28, 268);
+            this.label17.Name = "label17";
+            this.label17.Size = new System.Drawing.Size(218, 20);
+            this.label17.TabIndex = 9;
+            this.label17.Text = "Заробіток із замовлень:";
+            // 
+            // label16
+            // 
+            this.label16.AutoSize = true;
+            this.label16.Location = new System.Drawing.Point(28, 312);
+            this.label16.Name = "label16";
+            this.label16.Size = new System.Drawing.Size(269, 20);
+            this.label16.TabIndex = 8;
+            this.label16.Text = "Топ 5 популярних продуктів:";
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Location = new System.Drawing.Point(28, 224);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(256, 20);
+            this.label15.TabIndex = 7;
+            this.label15.Text = "Загальна кількість клієнтів:";
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Location = new System.Drawing.Point(24, 79);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(195, 20);
+            this.label14.TabIndex = 6;
+            this.label14.Text = "Кількість замовлень:";
+            // 
+            // lblPopularItems
+            // 
+            this.lblPopularItems.AutoSize = true;
+            this.lblPopularItems.Location = new System.Drawing.Point(303, 312);
+            this.lblPopularItems.Name = "lblPopularItems";
+            this.lblPopularItems.Size = new System.Drawing.Size(0, 20);
+            this.lblPopularItems.TabIndex = 5;
+            // 
+            // lblTotalCustomers
+            // 
+            this.lblTotalCustomers.AutoSize = true;
+            this.lblTotalCustomers.Location = new System.Drawing.Point(282, 224);
+            this.lblTotalCustomers.Name = "lblTotalCustomers";
+            this.lblTotalCustomers.Size = new System.Drawing.Size(0, 20);
+            this.lblTotalCustomers.TabIndex = 3;
+            // 
+            // lblTotalOrders
+            // 
+            this.lblTotalOrders.AutoSize = true;
+            this.lblTotalOrders.Location = new System.Drawing.Point(221, 79);
+            this.lblTotalOrders.Name = "lblTotalOrders";
+            this.lblTotalOrders.Size = new System.Drawing.Size(0, 20);
+            this.lblTotalOrders.TabIndex = 2;
             // 
             // btnShowStatistics
             // 
@@ -604,96 +686,26 @@
             this.btnShowStatistics.UseVisualStyleBackColor = false;
             this.btnShowStatistics.Click += new System.EventHandler(this.btnShowStatistics_Click);
             // 
-            // lblTotalOrders
+            // cmbStatisticType
             // 
-            this.lblTotalOrders.AutoSize = true;
-            this.lblTotalOrders.Location = new System.Drawing.Point(221, 79);
-            this.lblTotalOrders.Name = "lblTotalOrders";
-            this.lblTotalOrders.Size = new System.Drawing.Size(163, 20);
-            this.lblTotalOrders.TabIndex = 2;
-            this.lblTotalOrders.Text = "Немає інформації";
+            this.cmbStatisticType.FormattingEnabled = true;
+            this.cmbStatisticType.Location = new System.Drawing.Point(28, 46);
+            this.cmbStatisticType.Name = "cmbStatisticType";
+            this.cmbStatisticType.Size = new System.Drawing.Size(320, 28);
+            this.cmbStatisticType.TabIndex = 0;
             // 
-            // lblTotalCustomers
+            // btnBackMain
             // 
-            this.lblTotalCustomers.AutoSize = true;
-            this.lblTotalCustomers.Location = new System.Drawing.Point(282, 224);
-            this.lblTotalCustomers.Name = "lblTotalCustomers";
-            this.lblTotalCustomers.Size = new System.Drawing.Size(163, 20);
-            this.lblTotalCustomers.TabIndex = 3;
-            this.lblTotalCustomers.Text = "Немає інформації";
-            // 
-            // lblPopularItems
-            // 
-            this.lblPopularItems.AutoSize = true;
-            this.lblPopularItems.Location = new System.Drawing.Point(303, 312);
-            this.lblPopularItems.Name = "lblPopularItems";
-            this.lblPopularItems.Size = new System.Drawing.Size(163, 20);
-            this.lblPopularItems.TabIndex = 5;
-            this.lblPopularItems.Text = "Немає інформації";
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(24, 79);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(195, 20);
-            this.label14.TabIndex = 6;
-            this.label14.Text = "Кількість замовлень:";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(28, 224);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(256, 20);
-            this.label15.TabIndex = 7;
-            this.label15.Text = "Загальна кількість клієнтів:";
-            // 
-            // label16
-            // 
-            this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(28, 312);
-            this.label16.Name = "label16";
-            this.label16.Size = new System.Drawing.Size(269, 20);
-            this.label16.TabIndex = 8;
-            this.label16.Text = "Топ 5 популярних продуктів:";
-            // 
-            // label17
-            // 
-            this.label17.AutoSize = true;
-            this.label17.Location = new System.Drawing.Point(28, 268);
-            this.label17.Name = "label17";
-            this.label17.Size = new System.Drawing.Size(295, 20);
-            this.label17.TabIndex = 9;
-            this.label17.Text = "Кількість виконаних замовлень:";
-            // 
-            // label18
-            // 
-            this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(24, 23);
-            this.label18.Name = "label18";
-            this.label18.Size = new System.Drawing.Size(220, 20);
-            this.label18.TabIndex = 10;
-            this.label18.Text = "Виберіть проміжок часу";
-            // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.ForeColor = System.Drawing.Color.Brown;
-            this.label19.Location = new System.Drawing.Point(28, 184);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(153, 20);
-            this.label19.TabIndex = 11;
-            this.label19.Text = "Інша статистика";
-            // 
-            // lblTotalRevenue
-            // 
-            this.lblTotalRevenue.AutoSize = true;
-            this.lblTotalRevenue.Location = new System.Drawing.Point(329, 268);
-            this.lblTotalRevenue.Name = "lblTotalRevenue";
-            this.lblTotalRevenue.Size = new System.Drawing.Size(163, 20);
-            this.lblTotalRevenue.TabIndex = 12;
-            this.lblTotalRevenue.Text = "Немає інформації";
+            this.btnBackMain.BackColor = System.Drawing.Color.Brown;
+            this.btnBackMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnBackMain.ForeColor = System.Drawing.Color.White;
+            this.btnBackMain.Location = new System.Drawing.Point(666, 8);
+            this.btnBackMain.Name = "btnBackMain";
+            this.btnBackMain.Size = new System.Drawing.Size(119, 29);
+            this.btnBackMain.TabIndex = 16;
+            this.btnBackMain.Text = "Вийти";
+            this.btnBackMain.UseVisualStyleBackColor = false;
+            this.btnBackMain.Click += new System.EventHandler(this.btnBackMain_Click);
             // 
             // ManagerForm
             // 
@@ -712,20 +724,21 @@
             this.Load += new System.EventHandler(this.ManagerForm_Load);
             this.tabControlMenu.ResumeLayout(false);
             this.tabPageMenu.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewProducts)).EndInit();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.tabPagUsers.ResumeLayout(false);
-            this.tabPageMonitor.ResumeLayout(false);
-            this.tabPageMonitor.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClints)).EndInit();
             this.tabPageEmployee.ResumeLayout(false);
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewEmployee)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewClints)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
+            this.tabPageMonitor.ResumeLayout(false);
+            this.tabPageMonitor.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -789,5 +802,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.Label label19;
         private System.Windows.Forms.Label lblTotalRevenue;
+        private System.Windows.Forms.DataGridView dataGridViewProducts;
     }
 }

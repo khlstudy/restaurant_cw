@@ -156,31 +156,36 @@
             // btnRegister
             // 
             this.btnRegister.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btnRegister.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnRegister.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnRegister.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnRegister.Location = new System.Drawing.Point(310, 460);
             this.btnRegister.Name = "btnRegister";
             this.btnRegister.Size = new System.Drawing.Size(176, 49);
             this.btnRegister.TabIndex = 13;
             this.btnRegister.Text = "Зареєструватись";
-            this.btnRegister.UseVisualStyleBackColor = true;
+            this.btnRegister.UseVisualStyleBackColor = false;
             this.btnRegister.Click += new System.EventHandler(this.btnRegister_Click);
             // 
             // btnBackMain
             // 
             this.btnBackMain.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBackMain.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.btnBackMain.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBackMain.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBackMain.Location = new System.Drawing.Point(644, 466);
             this.btnBackMain.Name = "btnBackMain";
             this.btnBackMain.Size = new System.Drawing.Size(123, 37);
             this.btnBackMain.TabIndex = 14;
             this.btnBackMain.Text = "Назад";
-            this.btnBackMain.UseVisualStyleBackColor = true;
+            this.btnBackMain.UseVisualStyleBackColor = false;
             this.btnBackMain.Click += new System.EventHandler(this.btnBackMain_Click);
             // 
             // RegistrationForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
             this.ClientSize = new System.Drawing.Size(797, 538);
             this.Controls.Add(this.btnBackMain);
             this.Controls.Add(this.btnRegister);
